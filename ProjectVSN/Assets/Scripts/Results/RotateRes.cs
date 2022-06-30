@@ -5,9 +5,9 @@ using UnityEngine;
 public class RotateRes : MonoBehaviour
 {
     [SerializeField]
-    private int rotateSpeed = 2;
+    private int rotateSpeed = 5;
 
-    private Vector3 initMousePos;
+    private Vector3 prevMousePos;
     private Material defaultMaterial;
     public Material hoverMaterial;
     public Material clickMaterial;
@@ -17,40 +17,38 @@ public class RotateRes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initMousePos = Vector3.zero;
+        prevMousePos = Vector3.zero;
         defaultMaterial = transform.GetComponent<Renderer>().material;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     private void OnMouseDown()
     {
-        initMousePos = Input.mousePosition;
+        prevMousePos = Input.mousePosition;
         transform.GetComponent<Renderer>().material = clickMaterial;
     }
 
     private void OnMouseUp()
     {
-        initMousePos = Vector3.zero;
+        prevMousePos = Vector3.zero;
         haveTurned = false;
         gameObject.GetComponent<Renderer>().material = defaultMaterial;
     }
     private void OnMouseDrag()
     {
         Vector3 newMousePos = Input.mousePosition;
-        if(!newMousePos.Equals(initMousePos))
-            if (newMousePos.x < initMousePos.x) //muevo hacia la izquierda
+        if (!newMousePos.Equals(prevMousePos))
+        {
+            float tempDist = prevMousePos.x - newMousePos.x;
+            if (tempDist < 0) //muevo hacia la izquierda
             {
-                DoTurn(-1);
+                DoTurn(tempDist);
             }
             else //muevo hacia la derecha
             {
-                DoTurn(1);
+                DoTurn(tempDist);
             }
+            prevMousePos = newMousePos;
+        }
     }
 
     private void OnMouseOver()
@@ -66,7 +64,7 @@ public class RotateRes : MonoBehaviour
             transform.GetComponent<Renderer>().material = defaultMaterial;
     }
 
-    private void DoTurn(int dir)
+    private void DoTurn(float dir)
     {
         //if (haveTurned == false)
         //{

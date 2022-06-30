@@ -14,10 +14,15 @@ public class CilinderResultsController : MonoBehaviour
     // VARIABLES
     //
     [SerializeField]
+    private float distance = 2.6f;
+
+    [SerializeField]
     private int resultCount = 10;
 
     [SerializeField]
-    private float distance = 2.6f;
+    private bool insideOutside = true;
+
+    private int insideValue = -180;
 
     public GameObject placeholder;
     private GameObject[] listPH;
@@ -30,6 +35,10 @@ public class CilinderResultsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        insideValue = 0;
+        if (insideOutside)
+            insideValue = -180;
+
         initPlaceholders();
     }
 
@@ -40,12 +49,12 @@ public class CilinderResultsController : MonoBehaviour
 
         for (int i = 0; i < resultCount; i++)
         {
-            float actualGrade = -i * gradeSeparation;
+            float actualGrade = -i * gradeSeparation - 180;
             float radGrade = actualGrade * SEXAG2RAD;
             float tempx = Mathf.Sin(radGrade);
             float tempz = Mathf.Cos(radGrade);
 
-            Quaternion tempQuat = Quaternion.Euler(-90, 0, actualGrade+180);
+            Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + insideValue);
 
             listPH[i] = Instantiate(placeholder, gameObject.transform);
             listPH[i].name += i; 

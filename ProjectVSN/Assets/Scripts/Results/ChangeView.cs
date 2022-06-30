@@ -6,7 +6,7 @@ public class ChangeView : MonoBehaviour
 {
     public GameObject toActive;
     public GameObject toDesactive;
-    public Material clickMaterial;
+    public Material hoverMaterial;
 
     private Material defaultMaterial;
 
@@ -25,7 +25,7 @@ public class ChangeView : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        transform.GetComponent<Renderer>().material = clickMaterial;
+        transform.GetComponent<Renderer>().material = hoverMaterial;
     }
 
     private void OnMouseExit()

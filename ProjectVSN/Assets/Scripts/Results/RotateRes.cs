@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RotateRes : MonoBehaviour
 {
+    [SerializeField]
+    private int rotateSpeed = 2;
+
     private Vector3 initMousePos;
     private Material defaultMaterial;
     public Material hoverMaterial;
@@ -65,10 +68,10 @@ public class RotateRes : MonoBehaviour
 
     private void DoTurn(int dir)
     {
-        if (haveTurned == false)
-        {
-            transform.Rotate(0, (45 * dir), 0);
+        //if (haveTurned == false)
+        //{
+            transform.Rotate(0, (rotateSpeed * dir * Time.deltaTime), 0);
             haveTurned = true;
-        }
+        //}
     }
 }

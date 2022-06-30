@@ -864,6 +864,7 @@ GameObject:
   - component: {fileID: 1004412446}
   - component: {fileID: 1004412445}
   - component: {fileID: 1004412444}
+  - component: {fileID: 1004412448}
   - component: {fileID: 1004412447}
   m_Layer: 0
   m_Name: Results
@@ -963,8 +964,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc980c9b3c4a046949a533aec8e8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 20
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
   clickMaterial: {fileID: 2100000, guid: 3c274c5d1c67b1b48b8b6551cba0a4e3, type: 2}
+--- !u!114 &1004412448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004412442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5036c3de07856ea4baacfcaf42da61e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultCount: 10
+  distance: 2.6
+  placeholder: {fileID: 3099088890290558391, guid: 31072205237066e47a0a92d10cb26a2b, type: 3}
+  listPH: []
 --- !u!1 &1005363367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2534e23d39c1b87409d736ab2fdb7476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnabled: 1
+  isEnabled: 0
 --- !u!4 &2075724156
 Transform:
   m_ObjectHideFlags: 0
@@ -1514,6 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc980c9b3c4a046949a533aec8e8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 2
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
   clickMaterial: {fileID: 2100000, guid: 3c274c5d1c67b1b48b8b6551cba0a4e3, type: 2}
 --- !u!65 &3931241089677210299

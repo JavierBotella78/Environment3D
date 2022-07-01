@@ -10,6 +10,11 @@ public class ChangeView : MonoBehaviour
 
     private Material defaultMaterial;
 
+    [SerializeField]
+    private bool searchActivated = false;
+
+    public delegate void StartSearch();
+    public static event StartSearch OnSearchStart;
 
     private void Start()
     {
@@ -21,6 +26,11 @@ public class ChangeView : MonoBehaviour
         toDesactive.SetActive(false);
         toActive.SetActive(true);
         gameObject.GetComponent<Renderer>().material = defaultMaterial;
+
+        if (searchActivated && OnSearchStart != null)
+        {
+            OnSearchStart();
+        }
     }
 
     private void OnMouseEnter()

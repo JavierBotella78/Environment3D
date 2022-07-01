@@ -16,7 +16,7 @@ public class CilinderResultsController : MonoBehaviour
     [SerializeField]
     private float distance = 2.6f;
 
-    [SerializeField]
+    [SerializeField, Range(1,10)]
     private int resultCount = 10;
 
     [SerializeField]
@@ -26,6 +26,8 @@ public class CilinderResultsController : MonoBehaviour
 
     public GameObject placeholder;
     private GameObject[] listPH;
+
+    public GameObject[] ListOfPlaceholders { get { return listPH; } }
 
     private float gradeSeparation;
 
@@ -44,6 +46,7 @@ public class CilinderResultsController : MonoBehaviour
 
     void initPlaceholders()
     {
+        
         listPH = new GameObject[resultCount];
         gradeSeparation = TOTALGRADES / (float)resultCount;
 

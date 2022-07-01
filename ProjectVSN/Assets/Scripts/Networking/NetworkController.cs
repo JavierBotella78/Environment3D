@@ -9,14 +9,35 @@ public class NetworkController : MonoBehaviour
     [SerializeField]
     private bool isEnabled = false;
 
+    public string[] results = { "" };
+
     // Start is called before the first frame update
     void Start()
     {
-        if (isEnabled)
-            StartCoroutine(GetCoroutine());
+        
     }
 
-    IEnumerator GetCoroutine() 
+    public void StartSearch(int numResults)
+    {
+        if (isEnabled)
+        {
+            results = new string[numResults];
+            StartCoroutine(LoopGet(results, numResults));
+        }
+    }
+
+    IEnumerator LoopGet(string[] results, int numResults)
+    {
+        for (int i = 0; i < numResults; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            //TODO: Creo que no funciona, se pasa por valor creo
+            StartCoroutine(GetCoroutine(results[i]));
+        }
+    }
+
+    IEnumerator GetCoroutine(string result)
     {
         // Se crea un objeto capaz de realizar llamadas GET a la url indicada
         UnityWebRequest www = UnityWebRequest.Get("https://catfact.ninja/fact"); // Llamada de prueba que da una curiosidad sobre gatos aleatoria
@@ -31,10 +52,8 @@ public class NetworkController : MonoBehaviour
         else
         {
             // Mostrar el resultado como texto (json)
-            Debug.Log(www.downloadHandler.text);
+            result = www.downloadHandler.text;
 
-            // O recibir los datos binarios
-            byte[] results = www.downloadHandler.data;
         }
 
     }

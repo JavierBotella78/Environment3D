@@ -11,7 +11,6 @@ public class RotateRes : MonoBehaviour
     private Material defaultMaterial;
     public Material hoverMaterial;
     public Material clickMaterial;
-    private bool haveTurned = false;
 
 
     // Start is called before the first frame update
@@ -30,7 +29,6 @@ public class RotateRes : MonoBehaviour
     private void OnMouseUp()
     {
         prevMousePos = Vector3.zero;
-        haveTurned = false;
         gameObject.GetComponent<Renderer>().material = defaultMaterial;
     }
     private void OnMouseDrag()
@@ -66,10 +64,6 @@ public class RotateRes : MonoBehaviour
 
     private void DoTurn(float dir)
     {
-        //if (haveTurned == false)
-        //{
-            transform.Rotate(0, (rotateSpeed * dir * Time.deltaTime), 0);
-            haveTurned = true;
-        //}
+        transform.Rotate(0, (rotateSpeed * dir * Time.deltaTime), 0);
     }
 }

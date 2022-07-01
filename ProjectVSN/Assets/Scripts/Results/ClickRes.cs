@@ -5,6 +5,8 @@ using UnityEngine;
 public class ClickRes : MonoBehaviour
 {
     public GameObject openPoint;
+    private GameObject prevParent;
+    private GameObject player;
 
     private Quaternion prevRot;
     private Vector3 initPos;
@@ -16,6 +18,8 @@ public class ClickRes : MonoBehaviour
     void Start()
     {
         openPoint = GameObject.FindGameObjectWithTag("ViewPoint");
+        player = GameObject.FindGameObjectWithTag("Player");
+
         defaultMaterial = transform.GetComponent<Renderer>().material;
         initPos = transform.position;
     }

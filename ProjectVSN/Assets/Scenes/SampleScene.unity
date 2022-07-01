@@ -1692,7 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc980c9b3c4a046949a533aec8e8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 30
+  rotateSpeed: -30
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
   clickMaterial: {fileID: 2100000, guid: 3c274c5d1c67b1b48b8b6551cba0a4e3, type: 2}
 --- !u!114 &3931241089677210303

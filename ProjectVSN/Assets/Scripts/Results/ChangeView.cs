@@ -26,11 +26,6 @@ public class ChangeView : MonoBehaviour
         toDesactive.SetActive(false);
         toActive.SetActive(true);
         gameObject.GetComponent<Renderer>().material = defaultMaterial;
-
-        if (searchActivated && OnSearchStart != null)
-        {
-            OnSearchStart();
-        }
     }
 
     private void OnMouseEnter()

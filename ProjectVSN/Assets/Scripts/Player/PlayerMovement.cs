@@ -6,9 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     private float playerSpeed = 2.0f;
+    [SerializeField]
     private float maxX=0.5f;
+    [SerializeField]
     private float minX=-0.5f;
+    [SerializeField]
     private float maxZ=1f;
+    [SerializeField]
     private float minZ=0f;
 
 

@@ -8,7 +8,7 @@ public class ConverterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /* test
+        /*
         string test = System.IO.File.ReadAllText(@"C:\Users\USUARIO\Desktop\test.json");
         TextToVSNAssets(test, 10);
         */
@@ -32,7 +32,7 @@ public class ConverterController : MonoBehaviour
         int i = 0;
         foreach (var child in jsonObj.GetValue("response").Value<JToken>("docs").Children()) 
         {
-            if (i == 10)
+            if (i == num)
                 break;
 
             string id = child.Value<string>("Asset_ID_SORT");
@@ -50,7 +50,6 @@ public class ConverterController : MonoBehaviour
             i++;
         }
 
-        Debug.Log(vsnAssets[0]);
 
         return vsnAssets;
     }

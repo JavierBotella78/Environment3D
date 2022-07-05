@@ -2,66 +2,63 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class SearchController : MonoBehaviour
 {
-    public GameObject[] results;
+    // VARIABLES
+    //
 
-    NetworkController nc;
+    public VSNAsset[] Results { get; set; }
+
+    [SerializeField]
+    private NetworkController nc;
+    private NetworkResponse nr;
+
+    [SerializeField]
+    private ConverterController cc;
+
+    [SerializeField]
+    private bool searchStarted = false;
 
 
-    public bool searchStarted = false;
+    // METHODS
+    //
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        ChangeView.OnSearchStart += StartSearch;
-
-        nc = GameObject.Find("NetworkManager").GetComponent<NetworkController>();
+        StartSearch();
     }
-    private void OnDestroy()
-    {
-        ChangeView.OnSearchStart -= StartSearch;
-    }
 
-
-    private void StartSearch()
+    public void StartSearch()
     {
-        // Empezamos la búsqueda
+        nr = nc.StartSearch("https://catfact.ninja/fact");
         searchStarted = true;
-
-        // Buscamos un elemento Resultado valido donde poner los resultados
-        var tmpObjects = GameObject.FindGameObjectsWithTag("Result");
-        foreach (var obj in tmpObjects)
-        {
-            if (obj.active)
-            {
-                results = obj.GetComponent<CilinderResultsController>().ListOfPlaceholders;
-                break;
-            }
-        }
-
-        // Buscamos con N resultados
-        nc.StartSearch(10);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Si hemos empezado a buscar...
-        if (searchStarted)
+        if (searchStarted && nr.resultCode == UnityWebRequest.Result.Success)
         {
-            // ...miramos que la corutina haya terminado
-            if (Array.Exists(nc.results, element => element == "" || String.IsNullOrWhiteSpace(element)))
-                return;
-
             searchStarted = false;
 
-            //TODO: Leer json y dividir los textos
-            foreach (string cadena in nc.results)
+            //TODO: LLAMAR CON LA URL DE VSN
+
+            Debug.Log(nr.respText);
+
+            string test = System.IO.File.ReadAllText(@"C:\Users\USUARIO\Desktop\test.json");
+
+            Results = cc.TextToVSNAssets(test, 10);
+
+            //results = cc.TextToVSNAssets(nr.respText, 10);
+
+            foreach (var asset in Results)
             {
-                Debug.Log(cadena);
+                Debug.Log(asset);
             }
+
+            //TODO: EVENTO PARA EL VIEWCONTROLLER
         }
     }
 

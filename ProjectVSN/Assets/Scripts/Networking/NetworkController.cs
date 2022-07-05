@@ -9,38 +9,29 @@ public class NetworkController : MonoBehaviour
     [SerializeField]
     private bool isEnabled = false;
 
-    public string[] results = { "" };
-
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    public void StartSearch(int numResults)
+    public NetworkResponse StartSearch(string url)
     {
+        NetworkResponse result = new();
+
         if (isEnabled)
         {
-            results = new string[numResults];
-            StartCoroutine(LoopGet(results, numResults));
+            StartCoroutine(GetCoroutine(result, url));
         }
+
+        return result;
     }
 
-    IEnumerator LoopGet(string[] results, int numResults)
-    {
-        for (int i = 0; i < numResults; i++)
-        {
-            yield return new WaitForSeconds(0.1f);
-
-            //TODO: Creo que no funciona, se pasa por valor creo
-            StartCoroutine(GetCoroutine(results[i]));
-        }
-    }
-
-    IEnumerator GetCoroutine(string result)
+    // "https://catfact.ninja/fact"
+    IEnumerator GetCoroutine(NetworkResponse result, string url)
     {
         // Se crea un objeto capaz de realizar llamadas GET a la url indicada
-        UnityWebRequest www = UnityWebRequest.Get("https://catfact.ninja/fact"); // Llamada de prueba que da una curiosidad sobre gatos aleatoria
+        UnityWebRequest www = UnityWebRequest.Get(url); // Llamada de prueba que da una curiosidad sobre gatos aleatoria
 
         yield return www.SendWebRequest();
 
@@ -48,11 +39,13 @@ public class NetworkController : MonoBehaviour
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.Log(www.error);
+            result.resultCode = www.result;
         }
         else
         {
             // Mostrar el resultado como texto (json)
-            result = www.downloadHandler.text;
+            result.respText = www.downloadHandler.text;
+            result.resultCode = www.result;
 
         }
 

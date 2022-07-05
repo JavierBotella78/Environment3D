@@ -29,9 +29,9 @@ public class VSNAsset
 
     public override string ToString()
     {
-        string result = "";
+        string result = "--- VSNAsset ---";
 
-        result += "ID: "        + Id_;
+        result += "\nID: "        + Id_;
         result += "\nNAME: "    + Name_;
         result += "\nIMG_URL: " + ImgURL_;
 

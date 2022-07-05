@@ -109,9 +109,9 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 1.6
     ledgeDropHeight: 0
-    maxJumpAcrossDistance: 0
+    maxJumpAcrossDistance: 3.98
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
@@ -1775,6 +1775,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.6999999
   m_Center: {x: -0.00000017881392, y: 0, z: 0.00000023841856}
+--- !u!114 &2114905730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114905721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ea5fd44f9a72948ae39b814d376668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sc: {fileID: 1663894739}
 --- !u!1001 &2121957448
 PrefabInstance:
   m_ObjectHideFlags: 0

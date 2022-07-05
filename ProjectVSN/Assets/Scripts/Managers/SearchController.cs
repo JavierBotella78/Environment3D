@@ -21,14 +21,13 @@ public class SearchController : MonoBehaviour
     [SerializeField]
     private bool searchStarted = false;
 
+    // EVENTS
+    //
+    public delegate void SearchEndedCallback(VSNAsset[] assets);
+    public static event SearchEndedCallback OnSearchEnded;
 
     // METHODS
     //
-
-    private void Start()
-    {
-        StartSearch();
-    }
 
     public void StartSearch()
     {
@@ -53,12 +52,7 @@ public class SearchController : MonoBehaviour
 
             //results = cc.TextToVSNAssets(nr.respText, 10);
 
-            foreach (var asset in Results)
-            {
-                Debug.Log(asset);
-            }
-
-            //TODO: EVENTO PARA EL VIEWCONTROLLER
+            OnSearchEnded(Results);
         }
     }
 

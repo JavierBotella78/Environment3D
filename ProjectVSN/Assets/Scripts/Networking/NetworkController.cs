@@ -9,12 +9,6 @@ public class NetworkController : MonoBehaviour
     [SerializeField]
     private bool isEnabled = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public NetworkResponse StartSearch(string url)
     {
         NetworkResponse result = new();

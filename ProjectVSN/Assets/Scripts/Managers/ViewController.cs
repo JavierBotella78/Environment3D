@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ViewController : MonoBehaviour
@@ -29,8 +30,6 @@ public class ViewController : MonoBehaviour
 
     private GameObject[] listPH;
 
-    public GameObject[] ListOfPlaceholders { get { return listPH; } }
-
     [SerializeField]
     private GameObject[] listViews;
 
@@ -51,6 +50,39 @@ public class ViewController : MonoBehaviour
 
         if (listViews.Length != 0)
             actualView = Array.Find(listViews, element => element.name == "Search");
+
+        SearchController.OnSearchEnded += ShowAssets;
+    }
+    private void OnDestroy()
+    {
+        SearchController.OnSearchEnded -= ShowAssets;
+    }
+
+    public void ShowAssets(VSNAsset[] assets)
+    {
+        int i = 0;
+
+        foreach (var ph in listPH)
+        {
+            if (i == assets.Length)
+                break;
+
+            // Titulo
+            TextMeshPro titleGO = ph.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
+            titleGO.text = assets[i].Name_;
+
+            // Img
+
+            // Tipo
+            TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
+            typeGO.text = assets[i].Type_;
+
+            // Clase
+            TextMeshPro classGO = ph.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
+            classGO.text = assets[i].Class_;
+
+            i++;
+        }
     }
 
     public void ChangeView(GameObject newView, GameObject oldView)
@@ -104,7 +136,6 @@ public class ViewController : MonoBehaviour
             Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + rotationOffset);
 
             listPH[i] = Instantiate(placeholder, results);
-            listPH[i].name += i;
             listPH[i].transform.rotation = tempQuat;
             listPH[i].transform.Translate(new Vector3(tempx * distance, 0, tempz * distance), results);
         }

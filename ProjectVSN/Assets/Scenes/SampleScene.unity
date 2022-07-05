@@ -246,7 +246,6 @@ MonoBehaviour:
   toActive: {fileID: 932996027}
   toDesactive: {fileID: 89240492}
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
-  searchActivated: 0
 --- !u!135 &304399538
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -697,7 +696,6 @@ MonoBehaviour:
   toActive: {fileID: 932996027}
   toDesactive: {fileID: 13139593}
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
-  searchActivated: 0
 --- !u!135 &781515568
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -811,7 +809,6 @@ MonoBehaviour:
   toActive: {fileID: 89240492}
   toDesactive: {fileID: 932996027}
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
-  searchActivated: 1
 --- !u!135 &849004514
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -886,7 +883,7 @@ GameObject:
   - component: {fileID: 932996028}
   m_Layer: 0
   m_Name: Search
-  m_TagString: Untagged
+  m_TagString: View
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,7 +1000,6 @@ GameObject:
   - component: {fileID: 1004412446}
   - component: {fileID: 1004412445}
   - component: {fileID: 1004412449}
-  - component: {fileID: 1004412448}
   - component: {fileID: 1004412447}
   m_Layer: 0
   m_Name: Results
@@ -1092,22 +1088,6 @@ MonoBehaviour:
   rotateSpeed: 30
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
   clickMaterial: {fileID: 2100000, guid: 3c274c5d1c67b1b48b8b6551cba0a4e3, type: 2}
---- !u!114 &1004412448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004412442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5036c3de07856ea4baacfcaf42da61e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 2.6
-  resultCount: 10
-  insideOutside: 0
-  placeholder: {fileID: 3099088890290558391, guid: 31072205237066e47a0a92d10cb26a2b, type: 3}
 --- !u!136 &1004412449
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1264,6 +1244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397956f6ffa01b349801238548e51141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceView1: 2.6
+  distanceView2: 4.5
+  resultCount: 10
+  placeholderView1: {fileID: 3099088890290558391, guid: 31072205237066e47a0a92d10cb26a2b, type: 3}
+  placeholderView2: {fileID: 3099088890290558391, guid: 31072205237066e47a0a92d10cb26a2b, type: 3}
+  listViews: []
 --- !u!1 &1326242810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1300,6 @@ MonoBehaviour:
   toActive: {fileID: 89240492}
   toDesactive: {fileID: 13139593}
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
-  searchActivated: 0
 --- !u!135 &1326242813
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1636,7 +1621,6 @@ MonoBehaviour:
   toActive: {fileID: 13139593}
   toDesactive: {fileID: 89240492}
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
-  searchActivated: 0
 --- !u!135 &2023477673
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1729,7 +1713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2534e23d39c1b87409d736ab2fdb7476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnabled: 1
+  isEnabled: 0
 --- !u!4 &2075724156
 Transform:
   m_ObjectHideFlags: 0
@@ -1895,9 +1879,8 @@ GameObject:
   - component: {fileID: 3931241089677210297}
   - component: {fileID: 3931241089677210304}
   - component: {fileID: 3931241089677210298}
-  - component: {fileID: 3931241089677210303}
   m_Layer: 0
-  m_Name: Results2
+  m_Name: Results
   m_TagString: Result
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1960,22 +1943,6 @@ MonoBehaviour:
   rotateSpeed: -30
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
   clickMaterial: {fileID: 2100000, guid: 3c274c5d1c67b1b48b8b6551cba0a4e3, type: 2}
---- !u!114 &3931241089677210303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3282682680643064684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5036c3de07856ea4baacfcaf42da61e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 4.5
-  resultCount: 10
-  insideOutside: 1
-  placeholder: {fileID: 3099088890290558391, guid: 31072205237066e47a0a92d10cb26a2b, type: 3}
 --- !u!64 &3931241089677210304
 MeshCollider:
   m_ObjectHideFlags: 0

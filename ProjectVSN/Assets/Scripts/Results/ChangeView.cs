@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class ChangeView : MonoBehaviour
 {
+    private ViewController viewController;
+
     public GameObject toActive;
     public GameObject toDesactive;
     public Material hoverMaterial;
 
     private Material defaultMaterial;
 
-    [SerializeField]
-    private bool searchActivated = false;
-
-    public delegate void StartSearch();
-    public static event StartSearch OnSearchStart;
-
     private void Start()
     {
         defaultMaterial = transform.GetComponent<Renderer>().material;
+        viewController = GameObject.Find("ViewManager").GetComponent<ViewController>();
     }
 
     private void OnMouseUpAsButton()
     {
-        toDesactive.SetActive(false);
-        toActive.SetActive(true);
+        viewController.ChangeView(toActive, toDesactive);
         gameObject.GetComponent<Renderer>().material = defaultMaterial;
     }
 

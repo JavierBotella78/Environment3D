@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3099088890290558385}
   - component: {fileID: -2058245776528243326}
   m_Layer: 0
-  m_Name: PatternResult
+  m_Name: AssetResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

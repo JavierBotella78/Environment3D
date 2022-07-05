@@ -5,14 +5,6 @@ using UnityEngine;
 
 public class ConverterController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        /*
-        string test = System.IO.File.ReadAllText(@"C:\Users\USUARIO\Desktop\test.json");
-        TextToVSNAssets(test, 10);
-        */
-    }
 
     public JObject TextToJSON(string text)
     {

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ClickRes : MonoBehaviour
 {
-    public GameObject openPoint;
+    private GameObject openPoint;
+    private Renderer planeBack;
+
     private Transform prevParent;
     private Transform player;
 
@@ -19,8 +21,9 @@ public class ClickRes : MonoBehaviour
     {
         openPoint = GameObject.FindGameObjectWithTag("ViewPoint");
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        planeBack = gameObject.transform.Find("PlaneBack").gameObject.GetComponent<Renderer>();
 
-        defaultMaterial = transform.GetComponent<Renderer>().material;
+        defaultMaterial = planeBack.material;
         initPos = transform.position;
     }
 
@@ -49,11 +52,11 @@ public class ClickRes : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        transform.GetComponent<Renderer>().material = hoverMaterial;
+        planeBack.material = hoverMaterial;
     }
 
     private void OnMouseExit()
     {
-        transform.GetComponent<Renderer>().material = defaultMaterial;
+        planeBack.material = defaultMaterial;
     }
 }

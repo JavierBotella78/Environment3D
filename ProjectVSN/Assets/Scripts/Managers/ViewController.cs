@@ -16,6 +16,9 @@ public class ViewController : MonoBehaviour
     // VARIABLES
     //
     [SerializeField]
+    private SearchController sc;
+
+    [SerializeField]
     private float distanceView1 = 2.6f;
     [SerializeField]
     private float distanceView2 = 4.5f;
@@ -34,6 +37,9 @@ public class ViewController : MonoBehaviour
     private GameObject[] listViews;
 
     private GameObject actualView = null;
+
+    [SerializeField]
+    private Texture testTextu;
 
 
     // EVENTS
@@ -61,6 +67,11 @@ public class ViewController : MonoBehaviour
     public void ShowAssets(VSNAsset[] assets)
     {
         int i = 0;
+        bool view1 = true;
+
+        if (actualView.name == "View2")
+            view1 = false;
+
 
         foreach (var ph in listPH)
         {
@@ -72,6 +83,12 @@ public class ViewController : MonoBehaviour
             titleGO.text = assets[i].Name_;
 
             // Img
+            if (!String.IsNullOrWhiteSpace(assets[i].ImgURL_) && !String.IsNullOrEmpty(assets[i].ImgURL_))
+            {
+
+            }
+            //Renderer ren = ph.transform.Find("Img").gameObject.GetComponent<Renderer>();
+            //ren.material.SetTexture("_MainTex", testTextu);
 
             // Tipo
             TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
@@ -81,8 +98,20 @@ public class ViewController : MonoBehaviour
             TextMeshPro classGO = ph.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
             classGO.text = assets[i].Class_;
 
+            if (!view1)
+            {
+                // Descripcion
+                TextMeshPro descGO = ph.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
+                descGO.text = assets[i].Desc_;
+
+                // Ultima fecha
+                TextMeshPro lastDate = ph.transform.Find("LastDate").gameObject.GetComponent<TextMeshPro>();
+                lastDate.text = assets[i].LastDate_;
+            }
+
             i++;
         }
+
     }
 
     public void ChangeView(GameObject newView, GameObject oldView)
@@ -95,6 +124,8 @@ public class ViewController : MonoBehaviour
             actualView.SetActive(true);
 
             InitActualView();
+
+            sc.ForceCallback();
         }
     }
 

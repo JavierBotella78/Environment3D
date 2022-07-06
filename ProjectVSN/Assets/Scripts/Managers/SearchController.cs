@@ -21,6 +21,8 @@ public class SearchController : MonoBehaviour
     [SerializeField]
     private bool searchStarted = false;
 
+    public bool SearchFinished { get; set; }
+
     // EVENTS
     //
     public delegate void SearchEndedCallback(VSNAsset[] assets);
@@ -29,10 +31,18 @@ public class SearchController : MonoBehaviour
     // METHODS
     //
 
+    private void Start()
+    {
+        SearchFinished = false;
+    }
+
     public void StartSearch()
     {
+        Results = null;
+        nr = new NetworkResponse();
         nr = nc.StartSearch("https://catfact.ninja/fact");
         searchStarted = true;
+        SearchFinished = false;
     }
 
     // Update is called once per frame
@@ -53,7 +63,15 @@ public class SearchController : MonoBehaviour
             //results = cc.TextToVSNAssets(nr.respText, 10);
 
             OnSearchEnded(Results);
+
+            SearchFinished = true;
         }
+    }
+
+    public void ForceCallback() 
+    {
+        if(SearchFinished && Results != null)
+            OnSearchEnded(Results);
     }
 
 

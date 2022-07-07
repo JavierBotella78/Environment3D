@@ -6,11 +6,12 @@ public class ChangeView : MonoBehaviour
 {
     private ViewController viewController;
 
-    public GameObject toActive;
-    public GameObject toDesactive;
-    public Material hoverMaterial;
-
+    [SerializeField]
+    private Material hoverMaterial;
     private Material defaultMaterial;
+
+    [SerializeField]
+    private bool returnSearch = false;
 
     private void Start()
     {
@@ -20,7 +21,11 @@ public class ChangeView : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        viewController.ChangeView(toActive, toDesactive);
+        if (returnSearch)
+            viewController.ReturnToSearch();
+        else
+            viewController.ChangeView();
+
         gameObject.GetComponent<Renderer>().material = defaultMaterial;
     }
 

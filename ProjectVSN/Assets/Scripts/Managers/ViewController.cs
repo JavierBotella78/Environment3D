@@ -39,7 +39,21 @@ public class ViewController : MonoBehaviour
     private GameObject actualView = null;
 
     [SerializeField]
+    private GameObject view1;
+    [SerializeField]
+    private GameObject view2;
+    [SerializeField]
+    private GameObject search;
+
+    [SerializeField]
     private Texture testTextu;
+
+
+    [SerializeField]
+    private GameObject[] buttons;
+
+    [SerializeField]
+    private GameObject player;
 
 
     // EVENTS
@@ -114,19 +128,38 @@ public class ViewController : MonoBehaviour
 
     }
 
-    public void ChangeView(GameObject newView, GameObject oldView)
+    public void ReturnToSearch() 
     {
-        if (Array.Exists(listViews, element => element == newView))
+        actualView.SetActive(false);
+
+        actualView = search;
+
+        foreach (GameObject button in buttons) 
+            button.SetActive(false);
+
+        actualView.SetActive(true);
+    }
+
+    public void ChangeView()
+    {
+        actualView.SetActive(false);
+
+        if (actualView == view1)
+            actualView = view2;
+        else
         {
-            actualView = newView;
-
-            oldView.SetActive(false);
-            actualView.SetActive(true);
-
-            InitActualView();
-
-            sc.ForceCallback();
+            actualView = view1;
+            foreach (GameObject button in buttons)
+                button.SetActive(true);
         }
+
+        actualView.SetActive(true);
+
+        player.transform.position = actualView.transform.Find("Spawn").transform.position;
+
+        InitActualView();
+
+        sc.ForceCallback();
     }
 
     private void InitActualView()

@@ -6,6 +6,9 @@ public class InitializeGame : MonoBehaviour
 {
     public GameObject toActive;
 
+    [SerializeField]
+    private GameObject[] toDesactive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +18,8 @@ public class InitializeGame : MonoBehaviour
             actual.SetActive(false);
         }
         toActive.SetActive(true);
+
+        foreach (GameObject actual in toDesactive)
+            actual.SetActive(false);
     }
 }

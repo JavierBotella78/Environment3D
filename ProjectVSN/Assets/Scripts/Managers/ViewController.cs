@@ -137,6 +137,8 @@ public class ViewController : MonoBehaviour
         foreach (GameObject button in buttons) 
             button.SetActive(false);
 
+        player.transform.position = actualView.transform.Find("Spawn").transform.position;
+
         actualView.SetActive(true);
     }
 

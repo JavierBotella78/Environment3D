@@ -56,7 +56,7 @@ public class SearchController : MonoBehaviour
 
             Debug.Log(nr.respText);
 
-            string test = System.IO.File.ReadAllText(@"C:\Users\USUARIO\Desktop\test.json");
+            string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
             Results = cc.TextToVSNAssets(test, 10);
 

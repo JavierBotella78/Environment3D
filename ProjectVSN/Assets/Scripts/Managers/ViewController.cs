@@ -139,6 +139,8 @@ public class ViewController : MonoBehaviour
 
         player.transform.position = actualView.transform.Find("Spawn").transform.position;
 
+        OnViewChanged();
+
         actualView.SetActive(true);
     }
 
@@ -158,6 +160,8 @@ public class ViewController : MonoBehaviour
         actualView.SetActive(true);
 
         player.transform.position = actualView.transform.Find("Spawn").transform.position;
+
+        OnViewChanged();
 
         InitActualView();
 

@@ -40,7 +40,7 @@ public class SearchController : MonoBehaviour
     {
         Results = null;
         nr = new NetworkResponse();
-        nr = nc.StartSearch("https://catfact.ninja/fact");
+        nr = nc.StartSearch("https://catfact.ninja/fact"); // https://testing/explorerservice/webpages/default.aspx#search=1092
         searchStarted = true;
         SearchFinished = false;
     }
@@ -58,7 +58,7 @@ public class SearchController : MonoBehaviour
 
             string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
-            Results = cc.TextToVSNAssets(test, 10);
+            Results = cc.TextToVSNAssets(test, 50);
 
             //results = cc.TextToVSNAssets(nr.respText, 10);
 

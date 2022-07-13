@@ -1736,9 +1736,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sc: {fileID: 1663894739}
+  padding: 0.92
   distanceView1: 2.6
   distanceView2: 4.5
   resultCount: 10
+  resultRows: 2
   placeholderView1: {fileID: 6868573218221100522, guid: fb083b46e68e69c4c9f7ca022f812bd2, type: 3}
   placeholderView2: {fileID: 8769911453628510856, guid: aa62f6e71cd55444bbaffbc999a506e1, type: 3}
   listViews: []
@@ -2266,20 +2268,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8560c469588a8b4f8ae85ba1aa3b742, type: 3}
   m_PrefabInstance: {fileID: 1027138248}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1817797631
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817797627}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.8301051
-  m_Height: 3.6602101
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1817797632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2295,6 +2283,20 @@ MonoBehaviour:
   rotateSpeed: 30
   hoverMaterial: {fileID: 2100000, guid: f59761db9c77c9745bc3ace835416dc3, type: 2}
   clickMaterial: {fileID: 2100000, guid: 3c274c5d1c67b1b48b8b6551cba0a4e3, type: 2}
+--- !u!64 &1817797635
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817797627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: c8560c469588a8b4f8ae85ba1aa3b742, type: 3}
 --- !u!1 &1895949645
 GameObject:
   m_ObjectHideFlags: 0

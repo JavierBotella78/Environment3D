@@ -19,12 +19,18 @@ public class ViewController : MonoBehaviour
     private SearchController sc;
 
     [SerializeField]
+    private float padding = 1.0f;
+
+    [SerializeField]
     private float distanceView1 = 2.6f;
     [SerializeField]
     private float distanceView2 = 4.5f;
 
     [SerializeField, Range(1, 10)]
     private int resultCount = 10;
+
+    [SerializeField, Range(1, 2)]
+    private int resultRows = 1;
 
     [SerializeField]
     private GameObject placeholderView1;
@@ -128,13 +134,13 @@ public class ViewController : MonoBehaviour
 
     }
 
-    public void ReturnToSearch() 
+    public void ReturnToSearch()
     {
         actualView.SetActive(false);
 
         actualView = search;
 
-        foreach (GameObject button in buttons) 
+        foreach (GameObject button in buttons)
             button.SetActive(false);
 
         player.transform.position = actualView.transform.Find("Spawn").transform.position;
@@ -193,22 +199,34 @@ public class ViewController : MonoBehaviour
     void InitPlaceholders(float distance, int rotationOffset, GameObject placeholder, Transform results)
     {
 
-        listPH = new GameObject[resultCount];
+        listPH = new GameObject[resultCount * resultRows];
         float gradeSeparation = TOTALGRADES / (float)resultCount;
-
-        for (int i = 0; i < resultCount; i++)
+        for (int j = 0; j < resultRows; j++)
         {
-            float actualGrade = -i * gradeSeparation - 180;
-            float radGrade = actualGrade * SEXAG2RAD;
-            float tempx = Mathf.Sin(radGrade);
-            float tempz = Mathf.Cos(radGrade);
+            float tmpPadding = padding;
 
-            Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + rotationOffset);
+            if (resultRows == 1)
+                tmpPadding = 0;
+            else
+                if (j % 2 != 0)
+                tmpPadding *= -1;
 
-            listPH[i] = Instantiate(placeholder, results);
-            listPH[i].transform.rotation = tempQuat;
-            listPH[i].transform.Translate(new Vector3(tempx * distance, 0, tempz * distance), results);
+
+            for (int i = 0; i < resultCount; i++)
+            {
+                float actualGrade = -i * gradeSeparation - 180;
+                float radGrade = actualGrade * SEXAG2RAD;
+                float tempx = Mathf.Sin(radGrade);
+                float tempz = Mathf.Cos(radGrade);
+
+                Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + rotationOffset);
+
+                listPH[resultCount * j + i] = Instantiate(placeholder, results);
+                listPH[resultCount * j + i].transform.rotation = tempQuat;
+                listPH[resultCount * j + i].transform.Translate(new Vector3(tempx * distance, tmpPadding, tempz * distance), results);
+            }
         }
+
     }
 
     private void InitView1(Transform results)

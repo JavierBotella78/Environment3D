@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class HandEvent : MonoBehaviour
 {
-
-    private Material defaultMaterial;
-    public Material clickMaterial;
+    private Animator animator;
 
     private void Start()
     {
-        defaultMaterial = transform.GetComponent<Renderer>().material;
+        //defaultMaterial = transform.GetComponent<Renderer>().material;
+        animator = GetComponent<Animator>();
+        animator.SetBool("IsOpen", true);
+        animator.SetBool("IsClose", false);
     }
 
     void Update()
@@ -18,11 +19,17 @@ public class HandEvent : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            transform.GetComponent<Renderer>().material = clickMaterial;
+            animator.SetBool("IsOpen", false);
+            animator.SetBool("IsClose", true);
+            //transform.GetComponent<Renderer>().material = clickMaterial;
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            transform.GetComponent<Renderer>().material = defaultMaterial; //drop
+            animator.SetBool("IsOpen", true);
+            animator.SetBool("IsClose", false);
+
+
+            //transform.GetComponent<Renderer>().material = defaultMaterial; //drop
         }
 
 

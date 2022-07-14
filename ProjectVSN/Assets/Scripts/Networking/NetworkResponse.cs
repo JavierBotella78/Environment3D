@@ -7,4 +7,6 @@ public class NetworkResponse
 {
     public string respText = "";
     public UnityWebRequest.Result resultCode = UnityWebRequest.Result.InProgress;
+    public Texture respTexture;
+
 }

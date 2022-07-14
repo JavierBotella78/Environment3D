@@ -18,10 +18,13 @@ public class SearchController : MonoBehaviour
     [SerializeField]
     private ConverterController cc;
 
-    [SerializeField]
     private bool searchStarted = false;
-
     public bool SearchFinished { get; set; }
+
+    public static int imagesToSearch = 0;
+
+    private bool imageSearchStarted = false;
+    private bool imageSearchFinished = false;
 
     // EVENTS
     //
@@ -40,9 +43,14 @@ public class SearchController : MonoBehaviour
     {
         Results = null;
         nr = new NetworkResponse();
-        nr = nc.StartSearch("https://catfact.ninja/fact"); // https://testing/explorerservice/webpages/default.aspx#search=1092
+        // https://catfact.ninja/fact
+        // https://testing/MAM/Searches/advanced/?start=0&maxrows=30
+        // https://testing/explorerservice/webpages/default.aspx#search=1092
+        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start=0&maxrows=30"); 
         searchStarted = true;
         SearchFinished = false;
+        imageSearchStarted = false;
+        imageSearchFinished = false;
     }
 
     // Update is called once per frame
@@ -52,19 +60,36 @@ public class SearchController : MonoBehaviour
         {
             searchStarted = false;
 
-            //TODO: LLAMAR CON LA URL DE VSN
+            // string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
-            Debug.Log(nr.respText);
+            Results = cc.TextToVSNAssets(nr.respText, 50);
 
-            string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
+            imageSearchStarted = true;
 
-            Results = cc.TextToVSNAssets(test, 50);
+            Debug.Log(Results.Length);
 
-            //results = cc.TextToVSNAssets(nr.respText, 10);
+            foreach (var asset in Results)
+            {
+                if (asset != null && !String.IsNullOrWhiteSpace(asset.ImgURL_) && !String.IsNullOrEmpty(asset.ImgURL_))
+                {
+                    imagesToSearch++;
+                    nc.StartImageSearch(asset);
+                }
+            }
+        }
 
+        if (imagesToSearch == 0 && imageSearchStarted)
+        {
+            imageSearchStarted = false;
+            imageSearchFinished = true;
+        }
+
+        if (!SearchFinished && imageSearchFinished)
+        {
             OnSearchEnded(Results);
 
             SearchFinished = true;
+            searchStarted = false;
         }
     }
 

@@ -52,10 +52,6 @@ public class ViewController : MonoBehaviour
     private GameObject search;
 
     [SerializeField]
-    private Texture testTextu;
-
-
-    [SerializeField]
     private GameObject[] buttons;
 
     [SerializeField]
@@ -105,10 +101,9 @@ public class ViewController : MonoBehaviour
             // Img
             if (!String.IsNullOrWhiteSpace(assets[i].ImgURL_) && !String.IsNullOrEmpty(assets[i].ImgURL_))
             {
-
-            }
-            //Renderer ren = ph.transform.Find("Img").gameObject.GetComponent<Renderer>();
-            //ren.material.SetTexture("_MainTex", testTextu);
+                Renderer ren = ph.transform.Find("Img").gameObject.GetComponent<Renderer>();
+                ren.material.SetTexture("_MainTex", assets[i].ImgTexture_);
+            }    
 
             // Tipo
             TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();

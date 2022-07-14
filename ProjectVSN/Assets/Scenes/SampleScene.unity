@@ -1747,7 +1747,6 @@ MonoBehaviour:
   view1: {fileID: 89240492}
   view2: {fileID: 13139593}
   search: {fileID: 932996027}
-  testTextu: {fileID: 2800000, guid: 407bac5014061a7428187eb5dafc86fe, type: 3}
   buttons:
   - {fileID: 206545583}
   - {fileID: 184855527}
@@ -2102,7 +2101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nc: {fileID: 2075724155}
   cc: {fileID: 1476373790}
-  searchStarted: 0
 --- !u!1 &1703061240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2534e23d39c1b87409d736ab2fdb7476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnabled: 1
+  isEnabled: 0
 --- !u!4 &2075724156
 Transform:
   m_ObjectHideFlags: 0

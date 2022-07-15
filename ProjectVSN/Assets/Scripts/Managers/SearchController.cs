@@ -66,8 +66,6 @@ public class SearchController : MonoBehaviour
 
             imageSearchStarted = true;
 
-            Debug.Log(Results.Length);
-
             foreach (var asset in Results)
             {
                 if (asset != null && !String.IsNullOrWhiteSpace(asset.ImgURL_) && !String.IsNullOrEmpty(asset.ImgURL_))

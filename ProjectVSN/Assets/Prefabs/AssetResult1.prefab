@@ -480,7 +480,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.1}
-  m_SizeDelta: {x: 19, y: 5}
+  m_SizeDelta: {x: 19, y: 5.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6868573216905448912
 MeshRenderer:
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.35
+  m_fontSize: 16.6
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1062,6 +1062,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eeb3cf26e987fc49b48d5660bf6af4a, type: 3}
+--- !u!1 &6980292422560922404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5eeb3cf26e987fc49b48d5660bf6af4a, type: 3}
+  m_PrefabInstance: {fileID: 7791107681574782581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8906352269533210783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980292422560922404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f49e2865f112c408554358741ff88d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7752148879116099998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5eeb3cf26e987fc49b48d5660bf6af4a, type: 3}

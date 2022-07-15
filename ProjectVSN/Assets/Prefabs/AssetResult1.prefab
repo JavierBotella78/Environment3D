@@ -823,6 +823,7 @@ GameObject:
   - component: {fileID: 6868573218221100533}
   - component: {fileID: 783775390970060699}
   - component: {fileID: 8252943168306085207}
+  - component: {fileID: 3933459932590512417}
   m_Layer: 0
   m_Name: AssetResult1
   m_TagString: Untagged
@@ -876,7 +877,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975c7357144504447aa6ca8e2f69099b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3933459932590512417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868573218221100522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f50c64f0860aef42b4bbd73dde291a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 3ea297af76e1207439b2149aef299b59, type: 2}
+  obj: {fileID: 8925578699487025905}
 --- !u!1 &7115391507887227012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,5 +1065,10 @@ PrefabInstance:
 --- !u!4 &7752148879116099998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5eeb3cf26e987fc49b48d5660bf6af4a, type: 3}
+  m_PrefabInstance: {fileID: 7791107681574782581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8925578699487025905 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5eeb3cf26e987fc49b48d5660bf6af4a, type: 3}
   m_PrefabInstance: {fileID: 7791107681574782581}
   m_PrefabAsset: {fileID: 0}

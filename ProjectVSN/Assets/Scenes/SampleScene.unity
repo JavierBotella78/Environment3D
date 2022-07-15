@@ -540,7 +540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1906c838d7d15474aa7e379b2e1373a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
   returnSearch: 0
 --- !u!135 &412221265
 SphereCollider:
@@ -555,6 +554,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.588
   m_Center: {x: -0.008400768, y: 0.019601464, z: 0.0013335645}
+--- !u!114 &412221269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412221260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f50c64f0860aef42b4bbd73dde291a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
 --- !u!1 &432059050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 785017fd4752bb341a0291ec3aa2a38a, type: 3}
@@ -1002,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
+      propertyPath: m_TagString
+      value: Hand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
 --- !u!1 &775352255 stripped
@@ -1021,7 +1037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1906c838d7d15474aa7e379b2e1373a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
   returnSearch: 1
 --- !u!135 &775352260
 SphereCollider:
@@ -1036,6 +1051,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.588
   m_Center: {x: -0.008400768, y: 0.019601464, z: 0.0013335645}
+--- !u!114 &775352264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775352255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f50c64f0860aef42b4bbd73dde291a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
 --- !u!1 &843766057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,7 +2492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1906c838d7d15474aa7e379b2e1373a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
   returnSearch: 0
 --- !u!135 &2114905726
 SphereCollider:
@@ -2833,6 +2860,7 @@ GameObject:
   - component: {fileID: 2114905726}
   - component: {fileID: 2114905730}
   - component: {fileID: 2114905725}
+  - component: {fileID: 8632055957087917743}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -2855,3 +2883,16 @@ Transform:
   m_Father: {fileID: 543450651586717603}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8632055957087917743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204707764426252254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f50c64f0860aef42b4bbd73dde291a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}

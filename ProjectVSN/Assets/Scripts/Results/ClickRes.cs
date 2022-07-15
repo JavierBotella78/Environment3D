@@ -5,7 +5,6 @@ using UnityEngine;
 public class ClickRes : MonoBehaviour
 {
     private GameObject openPoint;
-    private Renderer planeBack;
 
     private Transform prevParent;
     private Transform player;
@@ -13,17 +12,13 @@ public class ClickRes : MonoBehaviour
     private Quaternion prevRot;
     private Vector3 initPos;
 
-    public Material hoverMaterial;
-    private Material defaultMaterial;
     private bool open = false;
 
     void Start()
     {
         openPoint = GameObject.FindGameObjectWithTag("ViewPoint");
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        planeBack = gameObject.transform.Find("PlaneBack").gameObject.GetComponent<Renderer>();
 
-        defaultMaterial = planeBack.material;
         initPos = transform.position;
     }
 
@@ -50,13 +45,4 @@ public class ClickRes : MonoBehaviour
         
     }
 
-    private void OnMouseEnter()
-    {
-        planeBack.material = hoverMaterial;
-    }
-
-    private void OnMouseExit()
-    {
-        planeBack.material = defaultMaterial;
-    }
 }

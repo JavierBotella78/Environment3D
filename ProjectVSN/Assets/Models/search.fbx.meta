@@ -2,7 +2,34 @@ fileFormatVersion: 2
 guid: 9ee1e9914ef22624ca78ddacf381e7a6
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -1225750808265431582
+    second: lupa|Circle.001Action
+  - first:
+      74: -5206659980369647191
+    second: lupa|lupaAction
+  - first:
+      74: -4101048821241931225
+    second: lupa|SphereAction
+  - first:
+      74: 8971653179785726973
+    second: Circle.001|Circle.001Action
+  - first:
+      74: 423987184049859709
+    second: Circle.001|lupaAction
+  - first:
+      74: -2822386418710158255
+    second: Circle.001|SphereAction
+  - first:
+      74: 205323550368147561
+    second: Sphere|Circle.001Action
+  - first:
+      74: -3811230794584805165
+    second: Sphere|lupaAction
+  - first:
+      74: -3100628101864396295
+    second: Sphere|SphereAction
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -76,7 +103,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

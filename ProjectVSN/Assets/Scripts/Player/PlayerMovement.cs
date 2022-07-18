@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 newPos = move * Time.deltaTime * playerSpeed;
 
+        // Si no se mueve el jugador, no se actualiza la posicion
         if (newPos != Vector3.zero)
         {
             controller.Move(newPos);

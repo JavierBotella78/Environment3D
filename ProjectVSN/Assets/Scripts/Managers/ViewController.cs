@@ -73,13 +73,16 @@ public class ViewController : MonoBehaviour
         if (listViews.Length != 0)
             actualView = Array.Find(listViews, element => element.name == "Search");
 
+        // Nos suscribimos al evento OnSearchEnded
         SearchController.OnSearchEnded += ShowAssets;
     }
     private void OnDestroy()
     {
+        // Nos desuscribimos del evento OnSearchEnded
         SearchController.OnSearchEnded -= ShowAssets;
     }
 
+    // Cuando acaba la busqueda o cambiamos la vista, aplicamos los cambios a la vista actual.
     public void ShowAssets(VSNAsset[] assets)
     {
         int i = 0;
@@ -88,7 +91,7 @@ public class ViewController : MonoBehaviour
         if (actualView.name == "View2")
             view1 = false;
 
-
+        // Asociamos a cada placeholder de la vista un asset distinto
         foreach (var ph in listPH)
         {
             if (i == assets.Length)
@@ -119,7 +122,7 @@ public class ViewController : MonoBehaviour
                 TextMeshPro descGO = ph.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
                 descGO.text = assets[i].Desc_;
 
-                // Ultima fecha
+                // Ultima fecha de modificacion
                 TextMeshPro lastDate = ph.transform.Find("LastDate").gameObject.GetComponent<TextMeshPro>();
                 lastDate.text = assets[i].LastDate_;
             }
@@ -129,6 +132,7 @@ public class ViewController : MonoBehaviour
 
     }
 
+    // Se vuelve a la busqueda inicial. Vista especial sin placeholders
     public void ReturnToSearch()
     {
         actualView.SetActive(false);
@@ -138,6 +142,7 @@ public class ViewController : MonoBehaviour
         foreach (GameObject button in buttons)
             button.SetActive(false);
 
+        // Movemos al jugador al punto "spawn" de la vista
         player.transform.position = actualView.transform.Find("Spawn").transform.position;
 
         OnViewChanged();
@@ -145,6 +150,7 @@ public class ViewController : MonoBehaviour
         actualView.SetActive(true);
     }
 
+    // Cambiamos entre la vista 1 o 2, y aplicamos los cambios necesarios
     public void ChangeView()
     {
         actualView.SetActive(false);
@@ -160,12 +166,15 @@ public class ViewController : MonoBehaviour
 
         actualView.SetActive(true);
 
+        // Movemos al jugador al punto "spawn" de la vista
         player.transform.position = actualView.transform.Find("Spawn").transform.position;
 
         OnViewChanged();
 
+        // Iniciamos los placeholders de la vista
         InitActualView();
 
+        // Si tenemos los resultados listos, forzamos a que se asocien a los placeholders
         sc.ForceCallback();
     }
 
@@ -173,12 +182,16 @@ public class ViewController : MonoBehaviour
     {
         if (actualView && actualView.name != "Search")
         {
+            // Encontramos los resultados de la vista
             Transform results = actualView.transform.Find("Results");
             results.rotation = Quaternion.Euler(0, 0, 0);
 
+
+            // Destruimos los placeholder si los tuviera
             foreach (Transform child in results)
                 Destroy(child.gameObject);
 
+            // Iniciamos los placeholders 
             switch (actualView.name)
             {
                 case "View1":
@@ -194,8 +207,12 @@ public class ViewController : MonoBehaviour
     void InitPlaceholders(float distance, int rotationOffset, GameObject placeholder, Transform results)
     {
 
+        // Segun el número de filas y columnas, iniciamos el array de placeholders
         listPH = new GameObject[resultCount * resultRows];
+
+        // Separacion en grados entre cada placeholder
         float gradeSeparation = TOTALGRADES / (float)resultCount;
+
         for (int j = 0; j < resultRows; j++)
         {
             float tmpPadding = padding;
@@ -216,6 +233,7 @@ public class ViewController : MonoBehaviour
 
                 Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + rotationOffset);
 
+                // Instanciamos el placeholder correspondiente
                 listPH[resultCount * j + i] = Instantiate(placeholder, results);
                 listPH[resultCount * j + i].transform.rotation = tempQuat;
                 listPH[resultCount * j + i].transform.Translate(new Vector3(tempx * distance, tmpPadding, tempz * distance), results);

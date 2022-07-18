@@ -39,6 +39,7 @@ public class SearchController : MonoBehaviour
         SearchFinished = false;
     }
 
+    // Al empezar la busqueda, usamos el NetworkController e inicializamos las variables
     public void StartSearch()
     {
         Results = null;
@@ -56,16 +57,19 @@ public class SearchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Si ha terminado la búsqueda desde el NetworkController, entramos
         if (searchStarted && nr.resultCode == UnityWebRequest.Result.Success)
         {
             searchStarted = false;
 
             // string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
+            // Transformamos la respuesta a una lista de VSNAsset
             Results = cc.TextToVSNAssets(nr.respText, 50);
 
             imageSearchStarted = true;
 
+            // Por cada VSNAsset, buscamos si tiene una imagen con el NetworkController
             foreach (var asset in Results)
             {
                 if (asset != null && !String.IsNullOrWhiteSpace(asset.ImgURL_) && !String.IsNullOrEmpty(asset.ImgURL_))
@@ -76,12 +80,14 @@ public class SearchController : MonoBehaviour
             }
         }
 
+        // Si ha acabado la busqueda de imagenes, cambiamos las variables
         if (imagesToSearch == 0 && imageSearchStarted)
         {
             imageSearchStarted = false;
             imageSearchFinished = true;
         }
 
+        // Si no ha acabado la busqueda total y ha acabado la busqueda de imagenes, aplicamos los cambias a la vista
         if (!SearchFinished && imageSearchFinished)
         {
             OnSearchEnded(Results);
@@ -91,6 +97,7 @@ public class SearchController : MonoBehaviour
         }
     }
 
+    // Se llama al evento OnSearchEnded() de forma forzada, para recoger los resultados.
     public void ForceCallback() 
     {
         if(SearchFinished && Results != null)

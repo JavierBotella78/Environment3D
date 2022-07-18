@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+// Certificado para los https
 public class ForceAcceptAll : CertificateHandler
 {
     protected override bool ValidateCertificate(byte[] certificateData)
@@ -18,6 +19,7 @@ public class NetworkController : MonoBehaviour
     [SerializeField]
     private bool isEnabled = false;
 
+    // Con una url, empecamos una petición POST para conectar con la API de VSN
     public NetworkResponse StartSearch(string url)
     {
         NetworkResponse result = new();
@@ -30,6 +32,7 @@ public class NetworkController : MonoBehaviour
         return result;
     }
 
+    // Con un Asset de VSN, recogemos el path de la imagen y la buscamos
     public void StartImageSearch(VSNAsset asset)
     {
         string url = ImageUrl + asset.ImgURL_;
@@ -72,6 +75,7 @@ public class NetworkController : MonoBehaviour
         // Se crea un objeto capaz de realizar llamadas POST a la url indicada
         UnityWebRequest www = UnityWebRequest.Put(url, payload);
 
+        // Ponemos los atributos necesarios en la cabecera
         www.method = "POST";
         www.SetRequestHeader("Host"             , "testing");
         www.SetRequestHeader("Content-Length"   , "715");
@@ -81,6 +85,7 @@ public class NetworkController : MonoBehaviour
         www.SetRequestHeader("Accept-encoding"  , "gzip, deflate, br");
         www.SetRequestHeader("Accept-language"  , "es-ES,es;q=0.9");
 
+        // Aplicamos el certificado
         var cert = new ForceAcceptAll();
         www.certificateHandler = cert;
 

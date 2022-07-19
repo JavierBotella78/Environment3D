@@ -26,13 +26,6 @@ public class HoverObjects : MonoBehaviour
         hand.SetBool("IsHover", true);
     }
 
-    private void OnMouseEnter()
-    {
-        obj.material = hoverMaterial;
-        hand.SetBool("IsHover", true);
-
-    }
-
     private void OnMouseExit()
     {
         obj.material = defaultMaterial;

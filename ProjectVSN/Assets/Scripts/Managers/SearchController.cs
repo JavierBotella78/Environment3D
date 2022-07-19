@@ -21,6 +21,9 @@ public class SearchController : MonoBehaviour
     private bool searchStarted = false;
     public bool SearchFinished { get; set; }
 
+    [SerializeField]
+    private int numResults = 50;
+
     public static int imagesToSearch = 0;
 
     private bool imageSearchStarted = false;
@@ -47,7 +50,7 @@ public class SearchController : MonoBehaviour
         // https://catfact.ninja/fact
         // https://testing/MAM/Searches/advanced/?start=0&maxrows=30
         // https://testing/explorerservice/webpages/default.aspx#search=1092
-        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start=0&maxrows=30"); 
+        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start=0&maxrows=" + numResults); 
         searchStarted = true;
         SearchFinished = false;
         imageSearchStarted = false;

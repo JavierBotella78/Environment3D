@@ -34,6 +34,9 @@ public class ViewController : MonoBehaviour
     [SerializeField, Range(1, 2)]
     private int resultRows = 1;
 
+    private int actualPage_ = 1;
+    private int maxPage_ = 1;
+
     [SerializeField]
     private GameObject placeholderView1;
     [SerializeField]
@@ -58,7 +61,7 @@ public class ViewController : MonoBehaviour
     private GameObject search;
 
     [SerializeField]
-    private GameObject[] buttons;
+    private GameObject buttons;
 
     [SerializeField]
     private GameObject player;
@@ -91,60 +94,65 @@ public class ViewController : MonoBehaviour
     // Cuando acaba la busqueda o cambiamos la vista, aplicamos los cambios a la vista actual.
     public void ShowAssets(VSNAsset[] assets)
     {
-        int i = 0;
         bool view1 = true;
-        bool view2= false;
+        bool view2 = false;
 
         if (actualView.name == "View2")
         {
             view1 = false;
-            view2= true;
+            view2 = true;
         }
-        else if(actualView.name == "View3")
+        else if (actualView.name == "View3")
         {
             view1 = false;
-            view2= false;
+            view2 = false;
         }
 
+        int minResult = actualPage_ * resultCount * resultRows;
+        int maxResult = (actualPage_ + 1) * resultCount * resultRows;
+
+        int j = minResult;
+
         // Asociamos a cada placeholder de la vista un asset distinto
-        foreach (var ph in listPH)
+        for (int i = 0; i < listPH.Length; i++)
         {
-            if (i == assets.Length)
+            if (j == assets.Length || j == maxResult)
                 break;
+
+            GameObject ph = listPH[i];
 
             // Titulo
             TextMeshPro titleGO = ph.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
-            titleGO.text = assets[i].Name_;
+            titleGO.text = assets[j].Name_;
 
             // Img
-            if (!String.IsNullOrWhiteSpace(assets[i].ImgURL_) && !String.IsNullOrEmpty(assets[i].ImgURL_))
+            if (!String.IsNullOrWhiteSpace(assets[j].ImgURL_) && !String.IsNullOrEmpty(assets[j].ImgURL_))
             {
                 Renderer ren = ph.transform.Find("Img").gameObject.GetComponent<Renderer>();
-                ren.material.SetTexture("_MainTex", assets[i].ImgTexture_);
-            }    
+                ren.material.SetTexture("_MainTex", assets[j].ImgTexture_);
+            }
 
             // Tipo
             TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
-            typeGO.text = assets[i].Type_;
+            typeGO.text = assets[j].Type_;
 
             // Clase
             TextMeshPro classGO = ph.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
-            classGO.text = assets[i].Class_;
+            classGO.text = assets[j].Class_;
 
             if (!view1 && view2)
             {
                 // Descripcion
                 TextMeshPro descGO = ph.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
-                descGO.text = assets[i].Desc_;
+                descGO.text = assets[j].Desc_;
 
                 // Ultima fecha de modificacion
                 TextMeshPro lastDate = ph.transform.Find("LastDate").gameObject.GetComponent<TextMeshPro>();
-                lastDate.text = assets[i].LastDate_;
+                lastDate.text = assets[j].LastDate_;
             }
 
-            i++;
+            j++;
         }
-
     }
 
     // Se vuelve a la busqueda inicial. Vista especial sin placeholders
@@ -154,8 +162,7 @@ public class ViewController : MonoBehaviour
 
         actualView = search;
 
-        foreach (GameObject button in buttons)
-            button.SetActive(false);
+        buttons.SetActive(false);
 
         // Movemos al jugador al punto "spawn" de la vista
         player.transform.position = actualView.transform.Find("Spawn").transform.position;
@@ -172,13 +179,12 @@ public class ViewController : MonoBehaviour
 
         if (actualView == view1)
             actualView = view2;
-        else if(actualView == view2)
+        else if (actualView == view2)
             actualView = view3;
         else
         {
             actualView = view1;
-            foreach (GameObject button in buttons)
-                button.SetActive(true);
+            buttons.SetActive(true);
         }
 
         actualView.SetActive(true);

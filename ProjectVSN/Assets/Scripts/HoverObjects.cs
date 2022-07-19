@@ -20,11 +20,10 @@ public class HoverObjects : MonoBehaviour
 
     }
 
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
         obj.material = hoverMaterial;
         hand.SetBool("IsHover", true);
-
     }
 
     private void OnMouseExit()
@@ -40,4 +39,5 @@ public class HoverObjects : MonoBehaviour
         hand.SetBool("IsHover", false);
 
     }
+
 }

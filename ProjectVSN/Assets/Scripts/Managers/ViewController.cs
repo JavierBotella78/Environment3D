@@ -25,6 +25,8 @@ public class ViewController : MonoBehaviour
     private float distanceView1 = 2.6f;
     [SerializeField]
     private float distanceView2 = 4.5f;
+    [SerializeField]
+    private float distanceView3 = 2.6f;
 
     [SerializeField, Range(1, 10)]
     private int resultCount = 10;
@@ -36,6 +38,8 @@ public class ViewController : MonoBehaviour
     private GameObject placeholderView1;
     [SerializeField]
     private GameObject placeholderView2;
+    [SerializeField]
+    private GameObject placeholderView3;
 
     private GameObject[] listPH;
 
@@ -48,6 +52,8 @@ public class ViewController : MonoBehaviour
     private GameObject view1;
     [SerializeField]
     private GameObject view2;
+    [SerializeField]
+    private GameObject view3;
     [SerializeField]
     private GameObject search;
 
@@ -87,9 +93,18 @@ public class ViewController : MonoBehaviour
     {
         int i = 0;
         bool view1 = true;
+        bool view2= false;
 
         if (actualView.name == "View2")
+        {
             view1 = false;
+            view2= true;
+        }
+        else if(actualView.name == "View3")
+        {
+            view1 = false;
+            view2= false;
+        }
 
         // Asociamos a cada placeholder de la vista un asset distinto
         foreach (var ph in listPH)
@@ -116,7 +131,7 @@ public class ViewController : MonoBehaviour
             TextMeshPro classGO = ph.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
             classGO.text = assets[i].Class_;
 
-            if (!view1)
+            if (!view1 && view2)
             {
                 // Descripcion
                 TextMeshPro descGO = ph.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
@@ -157,6 +172,8 @@ public class ViewController : MonoBehaviour
 
         if (actualView == view1)
             actualView = view2;
+        else if(actualView == view2)
+            actualView = view3;
         else
         {
             actualView = view1;
@@ -199,6 +216,9 @@ public class ViewController : MonoBehaviour
                     break;
                 case "View2":
                     InitView2(results);
+                    break;
+                case "View3":
+                    InitView3(results);
                     break;
             }
         }
@@ -250,6 +270,11 @@ public class ViewController : MonoBehaviour
     private void InitView2(Transform results)
     {
         InitPlaceholders(distanceView2, -180, placeholderView2, results);
+    }
+
+    private void InitView3(Transform results)
+    {
+        InitPlaceholders(distanceView3, 0, placeholderView3, results);
     }
 
 }

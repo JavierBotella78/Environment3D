@@ -34,7 +34,7 @@ public class ViewController : MonoBehaviour
     [SerializeField, Range(1, 2)]
     private int resultRows = 1;
 
-    private int actualPage_ = 1;
+    private int actualPage_ = 0;
     private int maxPage_ = 1;
 
     [SerializeField]
@@ -108,8 +108,22 @@ public class ViewController : MonoBehaviour
             view2 = false;
         }
 
-        int minResult = actualPage_ * resultCount * resultRows;
-        int maxResult = (actualPage_ + 1) * resultCount * resultRows;
+        int totalCount = resultCount * resultRows;
+        int minResult = actualPage_ * totalCount;
+        int maxResult = (actualPage_ + 1) * totalCount;
+
+        maxPage_ = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(assets.Length) / Convert.ToDouble(totalCount)));
+
+        if (actualPage_ == maxPage_)
+        {
+            actualPage_ = maxPage_ - 1;
+            return;
+        }
+        else if (actualPage_ < 0)
+        {
+            actualPage_ = 0;
+            return;
+        }
 
         int j = minResult;
 
@@ -291,6 +305,26 @@ public class ViewController : MonoBehaviour
     private void InitView3(Transform results)
     {
         InitPlaceholders(distanceView3, 0, placeholderView3, results);
+    }
+
+    public void AvPage()
+    {
+        if (actualPage_ + 1 <= maxPage_)
+        {
+            actualPage_++;
+            InitActualView();
+            sc.ForceCallback();
+        }
+    }
+
+    public void RePage()
+    {
+        if (actualPage_ - 1 >= 0)
+        {
+            actualPage_--;
+            InitActualView();
+            sc.ForceCallback();
+        }
     }
 
 }

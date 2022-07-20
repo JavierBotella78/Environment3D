@@ -478,11 +478,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ee1e9914ef22624ca78ddacf381e7a6, type: 3}
   m_PrefabInstance: {fileID: 518941192}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &206545583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c8c28cb24aee1d48859968a5a35baea, type: 3}
-  m_PrefabInstance: {fileID: 1705043523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &236419943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4627289335563068160, guid: 68519a08d15989b4c9f82f4deaae020e, type: 3}
@@ -2600,9 +2595,7 @@ MonoBehaviour:
   view2: {fileID: 13139593}
   view3: {fileID: 1157112738}
   search: {fileID: 932996027}
-  buttons:
-  - {fileID: 206545583}
-  - {fileID: 184855527}
+  buttons: {fileID: 1374758944}
   player: {fileID: 1490692353}
 --- !u!4 &1290602402 stripped
 Transform:
@@ -3114,6 +3107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nc: {fileID: 2075724155}
   cc: {fileID: 1476373790}
+  numResults: 50
 --- !u!1 &1703061240
 GameObject:
   m_ObjectHideFlags: 0

@@ -252,17 +252,27 @@ public class ViewController : MonoBehaviour
 
             for (int i = 0; i < resultCount; i++)
             {
-                float actualGrade = -i * gradeSeparation - 180;
-                float radGrade = actualGrade * SEXAG2RAD;
-                float tempx = Mathf.Sin(radGrade);
-                float tempz = Mathf.Cos(radGrade);
+                if (actualView != view3)
+                {
+                    float actualGrade = -i * gradeSeparation - 180;
+                    float radGrade = actualGrade * SEXAG2RAD;
+                    float tempx = Mathf.Sin(radGrade);
+                    float tempz = Mathf.Cos(radGrade);
 
-                Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + rotationOffset);
-
-                // Instanciamos el placeholder correspondiente
-                listPH[resultCount * j + i] = Instantiate(placeholder, results);
-                listPH[resultCount * j + i].transform.rotation = tempQuat;
-                listPH[resultCount * j + i].transform.Translate(new Vector3(tempx * distance, tmpPadding, tempz * distance), results);
+                    Quaternion tempQuat = Quaternion.Euler(90, 0, -actualGrade + rotationOffset);
+                    
+                    // Instanciamos el placeholder correspondiente
+                    listPH[resultCount * j + i] = Instantiate(placeholder, results);
+                    listPH[resultCount * j + i].transform.rotation = tempQuat;
+                    listPH[resultCount * j + i].transform.Translate(new Vector3(tempx * distance, tmpPadding, tempz * distance), results);
+                }
+                else
+                {
+                    float tempy=1.75f-i*0.4f;
+                    // Instanciamos el placeholder correspondiente
+                    listPH[resultCount * j + i] = Instantiate(placeholder, results);
+                    listPH[resultCount * j + i].transform.Translate(new Vector3(tmpPadding*distance, tempy, -0.2f), results);
+                }
             }
         }
 

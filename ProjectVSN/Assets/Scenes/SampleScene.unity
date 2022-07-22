@@ -3090,7 +3090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sc: {fileID: 1663894739}
   padding: 0.92
-  distanceView1: 2.6
+  distanceView1: 2.3
   distanceView2: 4.5
   distanceView3: 2
   resultCount: 10
@@ -3098,6 +3098,7 @@ MonoBehaviour:
   placeholderView1: {fileID: 6868573218221100522, guid: fb083b46e68e69c4c9f7ca022f812bd2, type: 3}
   placeholderView2: {fileID: 8769911453628510856, guid: aa62f6e71cd55444bbaffbc999a506e1, type: 3}
   placeholderView3: {fileID: 3654512022703216203, guid: c7dd8a045ecefd843b581faca5694926, type: 3}
+  placeholderOpen: {fileID: 8164053799967334041, guid: 03243de2cb4f4d848afafb2cc0679b04, type: 3}
   listViews: []
   view1: {fileID: 89240492}
   view2: {fileID: 13139593}
@@ -4370,7 +4371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895949645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.15, z: 1.58}
+  m_LocalPosition: {x: 0, y: 2.35, z: 0.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

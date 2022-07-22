@@ -150,6 +150,10 @@ public class ViewController : MonoBehaviour
                 ren.material.SetTexture("_MainTex", assets[j].ImgTexture_);
             }
 
+            // Id
+            TextMeshPro idGO = ph.transform.Find("Id").gameObject.GetComponent<TextMeshPro>();
+            idGO.text = assets[j].Id_;
+
             // Tipo
             TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
             typeGO.text = assets[j].Type_;
@@ -322,6 +326,10 @@ public class ViewController : MonoBehaviour
             // Clase
             TextMeshPro classGO = actualResult.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
             classGO.text = actualAsset.Class_;
+
+            // Id
+            TextMeshPro idGO = actualResult.transform.Find("Id").gameObject.GetComponent<TextMeshPro>();
+            idGO.text = actualAsset.Id_;
 
             // Descripcion
             TextMeshPro descGO = actualResult.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();

@@ -12,7 +12,11 @@ public class ClickRes : MonoBehaviour
     private Quaternion prevRot;
     private Vector3 initPos;
 
-    private bool open = false;
+    private ViewController viewController;
+    private VSNAsset actualAsset;
+
+    [SerializeField]
+    private bool openRes = false;
 
     void Start()
     {
@@ -20,27 +24,29 @@ public class ClickRes : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         initPos = transform.position;
+
+        viewController = GameObject.Find("ViewManager").GetComponent<ViewController>();
+    }
+
+    public void setAsset(VSNAsset datos)
+    {
+        actualAsset = datos;
+    }
+
+    public VSNAsset getAsset()
+    {
+        return actualAsset;
     }
 
     private void OnMouseUpAsButton()
     {
-        open = !open;
-        if (open)
+        if (!openRes)
         {
-            prevRot = transform.rotation;
-            transform.rotation = Quaternion.Euler(new Vector3(90,0,180));
-            initPos = transform.position;
-            transform.position = openPoint.transform.position;
-
-            prevParent = gameObject.transform.parent;
-            gameObject.transform.SetParent(player);
+            viewController.OpenResult(openPoint, gameObject);
         }
         else
         {
-            transform.rotation = prevRot;
-            transform.position = initPos;
-
-            gameObject.transform.SetParent(prevParent);
+            viewController.CloseResult();
         }
         
     }

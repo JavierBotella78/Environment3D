@@ -43,8 +43,11 @@ public class ViewController : MonoBehaviour
     private GameObject placeholderView2;
     [SerializeField]
     private GameObject placeholderView3;
+    [SerializeField]
+    private GameObject placeholderOpen;
 
     private GameObject[] listPH;
+    private GameObject actualResult = null;
 
     [SerializeField]
     private GameObject[] listViews;
@@ -134,6 +137,7 @@ public class ViewController : MonoBehaviour
                 break;
 
             GameObject ph = listPH[i];
+            ph.GetComponent<ClickRes>().setAsset(assets[j]);
 
             // Titulo
             TextMeshPro titleGO = ph.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
@@ -290,6 +294,49 @@ public class ViewController : MonoBehaviour
             }
         }
 
+    }
+
+    public void OpenResult(GameObject point, GameObject original)
+    {
+        if (actualResult == null)
+        {
+            actualResult = Instantiate(placeholderOpen, point.transform);
+
+            VSNAsset actualAsset = original.GetComponent<ClickRes>().getAsset();
+
+            // Titulo
+            TextMeshPro titleGO = actualResult.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
+            titleGO.text = actualAsset.Name_;
+
+            // Img
+            if (!String.IsNullOrWhiteSpace(actualAsset.ImgURL_) && !String.IsNullOrEmpty(actualAsset.ImgURL_))
+            {
+                Renderer ren = actualResult.transform.Find("Img").gameObject.GetComponent<Renderer>();
+                ren.material.SetTexture("_MainTex", actualAsset.ImgTexture_);
+            }
+
+            // Tipo
+            TextMeshPro typeGO = actualResult.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
+            typeGO.text = actualAsset.Type_;
+
+            // Clase
+            TextMeshPro classGO = actualResult.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
+            classGO.text = actualAsset.Class_;
+
+            // Descripcion
+            TextMeshPro descGO = actualResult.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
+            descGO.text = actualAsset.Desc_;
+
+            // Ultima fecha de modificacion
+            TextMeshPro lastDate = actualResult.transform.Find("LastDate").gameObject.GetComponent<TextMeshPro>();
+            lastDate.text = actualAsset.LastDate_;
+        }
+    }
+
+    public void CloseResult()
+    {
+        Debug.Log("Cierro");
+        Destroy(actualResult);
     }
 
     private void InitView1(Transform results)

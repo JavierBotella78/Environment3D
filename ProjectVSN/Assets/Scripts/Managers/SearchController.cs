@@ -29,6 +29,10 @@ public class SearchController : MonoBehaviour
     private bool imageSearchStarted = false;
     private bool imageSearchFinished = false;
 
+    [SerializeField]
+    private GameObject inputSearch = null;
+    private string searchText = "*";
+
     // EVENTS
     //
     public delegate void SearchEndedCallback(VSNAsset[] assets);
@@ -45,12 +49,22 @@ public class SearchController : MonoBehaviour
     // Al empezar la busqueda, usamos el NetworkController e inicializamos las variables
     public void StartSearch()
     {
+        //obtenemos texto de busqueda
+        if (inputSearch)
+        {
+            string newText = inputSearch.GetComponent<TMPro.TMP_InputField>().text;
+            if (newText != "")
+                searchText = newText;
+            else
+                searchText = "*";
+        }
+
         Results = null;
         nr = new NetworkResponse();
         // https://catfact.ninja/fact
         // "https://testing/MAM/Searches/advanced/?start=0&maxrows=30" + numResults
         // https://testing/explorerservice/webpages/default.aspx#search=1092
-        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start=0&maxrows=" + numResults); 
+        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start=0&maxrows=" + numResults, searchText); 
         searchStarted = true;
         SearchFinished = false;
         imageSearchStarted = false;

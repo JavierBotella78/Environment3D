@@ -20,13 +20,13 @@ public class NetworkController : MonoBehaviour
     private bool isEnabled = false;
 
     // Con una url, empecamos una petición POST para conectar con la API de VSN
-    public NetworkResponse StartSearch(string url)
+    public NetworkResponse StartSearch(string url, string searchText)
     {
         NetworkResponse result = new();
 
         if (isEnabled)
         {
-            StartCoroutine(PostCoroutine(result, url));
+            StartCoroutine(PostCoroutine(result, url, searchText));
         }
 
         return result;
@@ -68,17 +68,22 @@ public class NetworkController : MonoBehaviour
 
     }
 
-    private string payload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"7f3e8fb1-6cfc-4ef5-b638-2c3f63dd4b7b\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"b7031079-c3ca-465f-8af8-60636417718e\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"dataSource\":null,\"subtipos\":[{\"id\":\"18\",\"descripcion\":\"AllTexts\"}],\"valores\":[],\"id\":\"\",\"descripcion\":\"Quick search fields\",\"tipoCampo\":11},\"condicion\":{\"id\":\"18\",\"descripcion\":\"AllTexts\"},\"valor\":\"*\",\"id\":\"2933af79-b6c7-4a2c-90b5-51dde6d0ac82\",\"code\":\"\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"LAST_DATE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
-    //private string payload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"589ff38c-f8d9-4b47-8e9a-ececb0afab73\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"2dc50515-2115-44b2-a103-47172451c437\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"id\":\"\",\"descripcion\":\"\",\"tipoCampo\":0,\"dataSource\":null},\"condicion\":{\"id\":18,\"descripcion\":\"AllTexts\"},\"valor\":\"*\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"SCORE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
-    IEnumerator PostCoroutine(NetworkResponse result, string url)
+    //private string payload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"7f3e8fb1-6cfc-4ef5-b638-2c3f63dd4b7b\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"b7031079-c3ca-465f-8af8-60636417718e\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"dataSource\":null,\"subtipos\":[{\"id\":\"18\",\"descripcion\":\"AllTexts\"}],\"valores\":[],\"id\":\"\",\"descripcion\":\"Quick search fields\",\"tipoCampo\":11},\"condicion\":{\"id\":\"18\",\"descripcion\":\"AllTexts\"},\"valor\":\"*\",\"id\":\"2933af79-b6c7-4a2c-90b5-51dde6d0ac82\",\"code\":\"\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"LAST_DATE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
+    //private string payload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"a2ac0663-9198-4e98-89e7-787f60f7c357\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"d54ac8a7-3e87-4c31-ae68-5f81070276b3\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"id\":\"\",\"descripcion\":\"\",\"tipoCampo\":0,\"dataSource\":null},\"condicion\":{\"id\":18,\"descripcion\":\"AllTexts\"},\"valor\":\"hola\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"LAST_DATE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
+    //private string busqueda = "*";
+    private string prePayload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"0a739c06-406c-4abd-8ffa-cf9cc7aed142\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"bda6a22f-1705-4cde-92e3-de18bb12329b\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"id\":\"\",\"descripcion\":\"\",\"tipoCampo\":0,\"dataSource\":null},\"condicion\":{\"id\":18,\"descripcion\":\"AllTexts\"},\"valor\":\"";
+    private string postPayload = "\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"LAST_DATE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
+
+    IEnumerator PostCoroutine(NetworkResponse result, string url, string searchText)
     {
+        string payload = prePayload + searchText + postPayload;
         // Se crea un objeto capaz de realizar llamadas POST a la url indicada
         UnityWebRequest www = UnityWebRequest.Put(url, payload);
 
         // Ponemos los atributos necesarios en la cabecera
         www.method = "POST";
-        www.SetRequestHeader("Host"             , "testing");
-        www.SetRequestHeader("Content-Length"   , "715");
+        //www.SetRequestHeader("Host"             , "testing");
+        //www.SetRequestHeader("Content-Length"   , "578");
         www.SetRequestHeader("Accept"           , "application/json, text/javascript, */*; q=0.01");
         www.SetRequestHeader("Content-type"     , "application/json; charset=UTF-8");
         www.SetRequestHeader("Authorization"    , "Logon rbaena:Vsn1234");
@@ -102,7 +107,6 @@ public class NetworkController : MonoBehaviour
             // Mostrar el resultado como texto (json)
             result.respText = www.downloadHandler.text;
             result.resultCode = www.result;
-            Debug.Log("respueesta: "+ www.result);
         }
 
         cert?.Dispose();

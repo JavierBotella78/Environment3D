@@ -130,49 +130,57 @@ public class ViewController : MonoBehaviour
 
         int j = minResult;
 
+
         // Asociamos a cada placeholder de la vista un asset distinto
         for (int i = 0; i < listPH.Length; i++)
         {
             if (j == assets.Length || j == maxResult)
                 break;
 
-            GameObject ph = listPH[i];
-            ph.GetComponent<ClickRes>().setAsset(assets[j]);
-
-            // Titulo
-            TextMeshPro titleGO = ph.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
-            titleGO.text = assets[j].Name_;
-
-            // Img
-            if (!String.IsNullOrWhiteSpace(assets[j].ImgURL_) && !String.IsNullOrEmpty(assets[j].ImgURL_))
+            if (assets[j] == null)
             {
-                Renderer ren = ph.transform.Find("Img").gameObject.GetComponent<Renderer>();
-                ren.material.SetTexture("_MainTex", assets[j].ImgTexture_);
+                Destroy(listPH[i].gameObject);
             }
-
-            // Id
-            TextMeshPro idGO = ph.transform.Find("Id").gameObject.GetComponent<TextMeshPro>();
-            idGO.text = assets[j].Id_;
-
-            // Tipo
-            TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
-            typeGO.text = assets[j].Type_;
-
-            // Clase
-            TextMeshPro classGO = ph.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
-            classGO.text = assets[j].Class_;
-
-            if (!view1 && view2)
+            else
             {
-                // Descripcion
-                TextMeshPro descGO = ph.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
-                descGO.text = assets[j].Desc_;
+                //guardamos asset en cada objeto para acceder a sus datos al abrir el resultado
+                GameObject ph = listPH[i];
+                ph.GetComponent<ClickRes>().setAsset(assets[j]);
 
-                // Ultima fecha de modificacion
-                TextMeshPro lastDate = ph.transform.Find("LastDate").gameObject.GetComponent<TextMeshPro>();
-                lastDate.text = assets[j].LastDate_;
+                // Titulo
+                TextMeshPro titleGO = ph.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
+                titleGO.text = assets[j].Name_;
+
+                // Img
+                if (!String.IsNullOrWhiteSpace(assets[j].ImgURL_) && !String.IsNullOrEmpty(assets[j].ImgURL_))
+                {
+                    Renderer ren = ph.transform.Find("Img").gameObject.GetComponent<Renderer>();
+                    ren.material.SetTexture("_MainTex", assets[j].ImgTexture_);
+                }
+
+                // Id
+                TextMeshPro idGO = ph.transform.Find("Id").gameObject.GetComponent<TextMeshPro>();
+                idGO.text = assets[j].Id_;
+
+                // Tipo
+                TextMeshPro typeGO = ph.transform.Find("Type").gameObject.GetComponent<TextMeshPro>();
+                typeGO.text = assets[j].Type_;
+
+                // Clase
+                TextMeshPro classGO = ph.transform.Find("Class").gameObject.GetComponent<TextMeshPro>();
+                classGO.text = assets[j].Class_;
+
+                if (!view1 && view2)
+                {
+                    // Descripcion
+                    TextMeshPro descGO = ph.transform.Find("Desc").gameObject.GetComponent<TextMeshPro>();
+                    descGO.text = assets[j].Desc_;
+
+                    // Ultima fecha de modificacion
+                    TextMeshPro lastDate = ph.transform.Find("LastDate").gameObject.GetComponent<TextMeshPro>();
+                    lastDate.text = assets[j].LastDate_;
+                }
             }
-
             j++;
         }
     }

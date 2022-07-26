@@ -67,6 +67,9 @@ public class ViewController : MonoBehaviour
     private GameObject buttons;
 
     [SerializeField]
+    private GameObject pagText; 
+
+    [SerializeField]
     private GameObject player;
 
 
@@ -127,6 +130,9 @@ public class ViewController : MonoBehaviour
             actualPage_ = 0;
             return;
         }
+
+        // Iniciamos paginacion
+        setPageText();
 
         int j = minResult;
 
@@ -227,6 +233,9 @@ public class ViewController : MonoBehaviour
         // Iniciamos los placeholders de la vista
         InitActualView();
 
+        // Iniciamos paginacion
+        setPageText();
+
         // Si tenemos los resultados listos, forzamos a que se asocien a los placeholders
         sc.ForceCallback();
     }
@@ -301,7 +310,7 @@ public class ViewController : MonoBehaviour
                     float tempy=1.75f-i*0.4f;
                     // Instanciamos el placeholder correspondiente
                     listPH[resultCount * j + i] = Instantiate(placeholder, results);
-                    listPH[resultCount * j + i].transform.Translate(new Vector3(tmpPadding*distance, tempy, -0.2f), results);
+                    listPH[resultCount * j + i].transform.Translate(new Vector3(tmpPadding*-distance, tempy, -0.2f), results);
                 }
             }
         }
@@ -372,10 +381,11 @@ public class ViewController : MonoBehaviour
 
     public void AvPage()
     {
-        if (actualPage_ + 1 <= maxPage_)
+        if (actualPage_ + 1 < maxPage_)
         {
             actualPage_++;
             InitActualView();
+            setPageText();
             sc.ForceCallback();
         }
     }
@@ -386,8 +396,14 @@ public class ViewController : MonoBehaviour
         {
             actualPage_--;
             InitActualView();
+            setPageText();
             sc.ForceCallback();
         }
+    }
+
+    private void setPageText()
+    {
+        pagText.gameObject.GetComponent<TextMeshPro>().text=(actualPage_+1)+" to "+maxPage_;
     }
 
 }

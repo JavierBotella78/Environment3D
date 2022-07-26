@@ -1939,19 +1939,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9720948
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.23458879
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1959,7 +1959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -27.135
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff8e6737792bd5c438c13fa8f8033a4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2828,6 +2828,7 @@ MonoBehaviour:
   view3: {fileID: 1157112738}
   search: {fileID: 932996027}
   buttons: {fileID: 1374758944}
+  pagText: {fileID: 1834770462}
   player: {fileID: 1490692353}
 --- !u!4 &1290602402 stripped
 Transform:
@@ -3490,10 +3491,34 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1490692355}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1490692355}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_OnTextSelection:
     m_PersistentCalls:
       m_Calls: []
@@ -4024,6 +4049,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8560c469588a8b4f8ae85ba1aa3b742, type: 3}
   m_PrefabInstance: {fileID: 1027138248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1834770462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8457263394895284100, guid: cbf5f84e8ac15a94b9d7e54e9a3274b9, type: 3}
+  m_PrefabInstance: {fileID: 655617607}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1895949645
 GameObject:

@@ -31,7 +31,17 @@ public class ConverterTests
         // Recibimos un string, el cual debe ser un JSON al transformarlo
         string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
-        // Lo convertimos a un objeto VSNAsset
-        var json = ConverterController.TextToVSNAssets(test, 10);
+        // Lo convertimos a un objeto VSNAsset[]
+        var assets = ConverterController.TextToVSNAssets(test, 10);
+
+        Assert.AreEqual(10, assets.Length);
+
+        foreach (var asset in assets)
+        {
+            Assert.NotNull(asset);
+            Assert.NotNull(asset.Id_);
+
+            Assert.AreNotEqual("", asset.Id_);
+        }
     }
 }

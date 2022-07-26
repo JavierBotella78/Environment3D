@@ -15,9 +15,6 @@ public class SearchController : MonoBehaviour
     private NetworkController nc;
     private NetworkResponse nr;
 
-    [SerializeField]
-    private ConverterController cc;
-
     private bool searchStarted = false;
     public bool SearchFinished { get; set; }
 
@@ -82,7 +79,7 @@ public class SearchController : MonoBehaviour
             // string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
             // Transformamos la respuesta a una lista de VSNAsset
-            Results = cc.TextToVSNAssets(nr.respText, 50);
+            Results = ConverterController.TextToVSNAssets(nr.respText, 50);
 
             imageSearchStarted = true;
 

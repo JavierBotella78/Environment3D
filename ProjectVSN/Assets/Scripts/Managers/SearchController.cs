@@ -16,9 +16,6 @@ public class SearchController : MonoBehaviour
     private NetworkController nc;
     private NetworkResponse nr;
 
-    [SerializeField]
-    private ConverterController cc;
-
     private bool searchStarted = false;
     public bool SearchFinished { get; set; }
 
@@ -85,7 +82,7 @@ public class SearchController : MonoBehaviour
             // string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
             // Transformamos la respuesta a una lista de VSNAsset
-            Results = cc.TextToVSNAssets(nr.respText, numResults, ref totalAssets);
+            Results = ConverterController.TextToVSNAssets(nr.respText, numResults, ref totalAssets);
             imageSearchStarted = true;
 
             // Por cada VSNAsset, buscamos si tiene una imagen con el NetworkController

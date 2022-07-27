@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConverterController : MonoBehaviour
+public static class ConverterController
 {
 
     // Transforma un texto que esté formateado como un json a un JSONObject
-    public JObject TextToJSON(string text)
+    public static JObject TextToJSON(string text)
     {
         JObject jsonObj = JObject.Parse(text);
 
@@ -15,7 +15,7 @@ public class ConverterController : MonoBehaviour
     }
 
     // Transforma un JSONObject a una lista de VSNAssets
-    public VSNAsset[] JSONObjToVSNAssets(JObject jsonObj, int num, ref int totalAssets)
+    public static VSNAsset[] JSONObjToVSNAssets(JObject jsonObj, int num, ref int totalAssets)
     {
         // JSON > response > docs[] > asset
 
@@ -51,7 +51,7 @@ public class ConverterController : MonoBehaviour
     }
 
     // Transforma un texto json a una lista de objetos VSNAsset
-    public VSNAsset[] TextToVSNAssets(string text, int num, ref int total)
+    public static VSNAsset[] TextToVSNAssets(string text, int num, ref int total)
     {
         return JSONObjToVSNAssets(TextToJSON(text), num, ref total);
     }

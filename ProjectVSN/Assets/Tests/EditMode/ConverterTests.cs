@@ -32,7 +32,8 @@ public class ConverterTests
         string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
         // Lo convertimos a un objeto VSNAsset[]
-        var assets = ConverterController.TextToVSNAssets(test, 10);
+        int total = 0;
+        var assets = ConverterController.TextToVSNAssets(test, 10, ref total);
 
         Assert.AreEqual(10, assets.Length);
 

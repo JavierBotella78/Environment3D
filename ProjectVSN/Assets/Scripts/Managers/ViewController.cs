@@ -34,6 +34,8 @@ public class ViewController : MonoBehaviour
     [SerializeField, Range(1, 2)]
     private int resultRows = 1;
 
+    private int totalCount = 1;
+
     private int actualPage_ = 0;
     private int maxPage_ = 1;
 
@@ -88,6 +90,12 @@ public class ViewController : MonoBehaviour
         if (listViews.Length != 0)
             actualView = Array.Find(listViews, element => element.name == "Search");
 
+        //totalCount = resultCount * resultRows;
+        totalCount = sc.getNumResuts();
+        actualPage_ = sc.getNumPag() / totalCount;
+        
+
+
         // Nos suscribimos al evento OnSearchEnded
         SearchController.OnSearchEnded += ShowAssets;
     }
@@ -114,36 +122,16 @@ public class ViewController : MonoBehaviour
             view2 = false;
         }
 
-        int totalCount = resultCount * resultRows;
-        int minResult = actualPage_ * totalCount;
-        int maxResult = (actualPage_ + 1) * totalCount;
-
-        maxPage_ = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(assets.Length) / Convert.ToDouble(totalCount)));
-
-        if (actualPage_ == maxPage_)
-        {
-            actualPage_ = maxPage_ - 1;
-            return;
-        }
-        else if (actualPage_ < 0)
-        {
-            actualPage_ = 0;
-            return;
-        }
-
         // Iniciamos paginacion
+        maxPage_ = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(sc.getTotalAssets()) / Convert.ToDouble(totalCount)));
         setPageText();
 
-        int j = minResult;
-
+        int j = 0;
 
         // Asociamos a cada placeholder de la vista un asset distinto
         for (int i = 0; i < listPH.Length; i++)
         {
-            if (j == assets.Length || j == maxResult)
-                break;
-
-            if (assets[j] == null)
+            if (j >= assets.Length || j >= totalCount || assets[j]==null)
             {
                 Destroy(listPH[i].gameObject);
             }
@@ -206,6 +194,8 @@ public class ViewController : MonoBehaviour
         OnViewChanged();
 
         actualView.SetActive(true);
+        sc.setNumPag(0);
+        actualPage_ = 0;
     }
 
     // Cambiamos entre la vista 1 o 2, y aplicamos los cambios necesarios
@@ -386,7 +376,9 @@ public class ViewController : MonoBehaviour
             actualPage_++;
             InitActualView();
             setPageText();
-            sc.ForceCallback();
+            sc.setNumPag(sc.getNumPag() + totalCount);
+            sc.StartSearch();
+            //sc.ForceCallback();
         }
     }
 
@@ -397,7 +389,9 @@ public class ViewController : MonoBehaviour
             actualPage_--;
             InitActualView();
             setPageText();
-            sc.ForceCallback();
+            sc.setNumPag(sc.getNumPag() - totalCount);
+            sc.StartSearch();
+            //sc.ForceCallback();
         }
     }
 

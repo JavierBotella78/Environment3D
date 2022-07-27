@@ -15,14 +15,16 @@ public class ConverterController : MonoBehaviour
     }
 
     // Transforma un JSONObject a una lista de VSNAssets
-    public VSNAsset[] JSONObjToVSNAssets(JObject jsonObj, int num)
+    public VSNAsset[] JSONObjToVSNAssets(JObject jsonObj, int num, ref int totalAssets)
     {
         // JSON > response > docs[] > asset
 
         // Creamos la lista de assets
+        totalAssets = System.Convert.ToInt32(jsonObj.GetValue("response").Value<string>("numFound"));
         VSNAsset[] vsnAssets = new VSNAsset[num];
 
         // Buscamos lo necesario para crear un VSNAsset
+        
         int i = 0;
         foreach (var child in jsonObj.GetValue("response").Value<JToken>("docs").Children()) 
         {
@@ -49,8 +51,9 @@ public class ConverterController : MonoBehaviour
     }
 
     // Transforma un texto json a una lista de objetos VSNAsset
-    public VSNAsset[] TextToVSNAssets(string text, int num)
+    public VSNAsset[] TextToVSNAssets(string text, int num, ref int total)
     {
-        return JSONObjToVSNAssets(TextToJSON(text), num);
+        return JSONObjToVSNAssets(TextToJSON(text), num, ref total);
     }
+
 }

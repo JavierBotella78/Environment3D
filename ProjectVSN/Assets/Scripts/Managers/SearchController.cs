@@ -10,6 +10,7 @@ public class SearchController : MonoBehaviour
     //
 
     public VSNAsset[] Results { get; set; }
+    private int totalAssets = 0;
 
     [SerializeField]
     private NetworkController nc;
@@ -22,7 +23,9 @@ public class SearchController : MonoBehaviour
     public bool SearchFinished { get; set; }
 
     [SerializeField]
-    private int numResults = 50;
+    private int numResults = 20;
+    [SerializeField]
+    private int numPagina = 0;
 
     public static int imagesToSearch = 0;
 
@@ -64,7 +67,7 @@ public class SearchController : MonoBehaviour
         // https://catfact.ninja/fact
         // "https://testing/MAM/Searches/advanced/?start=0&maxrows=30" + numResults
         // https://testing/explorerservice/webpages/default.aspx#search=1092
-        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start=0&maxrows=" + numResults, searchText); 
+        nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start="+numPagina+"&maxrows=" + numResults, searchText); 
         searchStarted = true;
         SearchFinished = false;
         imageSearchStarted = false;
@@ -82,8 +85,7 @@ public class SearchController : MonoBehaviour
             // string test = System.IO.File.ReadAllText(@"Assets/Files/test.json");
 
             // Transformamos la respuesta a una lista de VSNAsset
-            Results = cc.TextToVSNAssets(nr.respText, 50);
-
+            Results = cc.TextToVSNAssets(nr.respText, numResults, ref totalAssets);
             imageSearchStarted = true;
 
             // Por cada VSNAsset, buscamos si tiene una imagen con el NetworkController
@@ -121,5 +123,24 @@ public class SearchController : MonoBehaviour
             OnSearchEnded(Results);
     }
 
+    public int getNumPag()
+    {
+        return numPagina;
+    }
+
+    public void setNumPag(int num)
+    {
+        numPagina = num;
+    }
+
+    public int getNumResuts()
+    {
+        return numResults;
+    }
+
+    public int getTotalAssets()
+    {
+        return totalAssets;
+    }
 
 }

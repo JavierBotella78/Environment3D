@@ -251,6 +251,7 @@ public class ViewController : MonoBehaviour
                     break;
                 case "View2":
                     InitView2(results);
+                    results.rotation = Quaternion.Euler(0, 180, 0);
                     break;
                 case "View3":
                     InitView3(results);

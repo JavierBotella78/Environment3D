@@ -61,9 +61,6 @@ public class SearchController : MonoBehaviour
 
         Results = null;
         nr = new NetworkResponse();
-        // https://catfact.ninja/fact
-        // "https://testing/MAM/Searches/advanced/?start=0&maxrows=30" + numResults
-        // https://testing/explorerservice/webpages/default.aspx#search=1092
         nr = nc.StartSearch(@"https://testing/MAM/Searches/advanced/?start="+numPagina+"&maxrows=" + numResults, searchText); 
         searchStarted = true;
         SearchFinished = false;

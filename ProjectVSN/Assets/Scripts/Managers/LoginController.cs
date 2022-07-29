@@ -5,22 +5,24 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
-public class LoginController : MonoBehaviour
+public static class LoginController
 {
     const string loginPath = @"Assets/Files/login.txt";
     const string separator = "|||";
-    SHA256 encoder;
+    static SHA256 encoder = SHA256.Create();
 
+    /*
     private void Start()
     {
         encoder = SHA256.Create();
         Debug.Log(RegisterUser("rbaena", "Vsn1234"));
-        Debug.Log(CheckLogin("rbaena", "Vsn1234"));
+        Debug.Log(CheckUser("rbaena", "Vsn1234"));
 
     }
+    */
 
     // Comprueba que el usuario exista, y si lo hace, comprueba que la contraseña codificada coincida
-    public bool CheckLogin(string name, string pasw)
+    public static bool CheckUser(string name, string pasw)
     {
         string[] lines = GetLoginFileLines();
 
@@ -44,7 +46,7 @@ public class LoginController : MonoBehaviour
     }
 
     // Si no existe ya el usuario, lo crea
-    public bool RegisterUser(string user, string pasw)
+    public static bool RegisterUser(string user, string pasw)
     {
         if (!String.IsNullOrWhiteSpace(user) && !String.IsNullOrWhiteSpace(pasw))
         {
@@ -71,24 +73,24 @@ public class LoginController : MonoBehaviour
         return true;
     }
 
-    public string EncryptString(string chain)
+    private static string EncryptString(string chain)
     {
         string encChain = Encoding.UTF8.GetString(encoder.ComputeHash(Encoding.UTF8.GetBytes(chain)));
 
         return encChain;
     }
 
-    private string GetLoginFileContent()
+    private static string GetLoginFileContent()
     {
         return System.IO.File.ReadAllText(loginPath);
     }
 
-    private string[] GetLoginFileLines()
+    private static string[] GetLoginFileLines()
     {
         return System.IO.File.ReadAllLines(loginPath);
     }
 
-    private void AddUser(string name, string encPass)
+    private static void AddUser(string name, string encPass)
     {
         string fileContent = "";
         string offset = "\r\n";

@@ -9,6 +9,8 @@ TagManager:
   - ViewPoint
   - Result
   - Hand
+  - User
+  - Pass
   layers:
   - Default
   - TransparentFX

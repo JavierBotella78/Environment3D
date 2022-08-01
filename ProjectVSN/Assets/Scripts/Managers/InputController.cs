@@ -13,6 +13,8 @@ public class InputController : MonoBehaviour
     private TMP_InputField username;
     [SerializeField]
     private TMP_InputField password;
+    [SerializeField]
+    private Animator animator;
 
     private void Start()
     {
@@ -22,11 +24,28 @@ public class InputController : MonoBehaviour
 
     public void CheckLogin()
     {
-        Debug.Log(LoginController.CheckUser(username.text, password.text));
+        bool login = LoginController.CheckUser(username.text, password.text);
+        Debug.Log(login);
+
+        if (login)
+        {
+            animator.SetBool("logtrue", true);
+        }
+        else
+            animator.SetBool("logfalse", true);
+
     }
 
     public void RegisterUser() 
     {
-        Debug.Log(LoginController.RegisterUser(username.text, password.text));
+        bool register = LoginController.RegisterUser(username.text, password.text);
+        Debug.Log(register);
+
+        if (register)
+        {
+            animator.SetBool("logtrue", true);
+        }
+        else
+            animator.SetBool("logfalse", true);
     }
 }

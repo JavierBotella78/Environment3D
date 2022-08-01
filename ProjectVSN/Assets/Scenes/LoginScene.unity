@@ -1173,7 +1173,7 @@ MonoBehaviour:
   registerButton: {fileID: 1908854237}
   username: {fileID: 1448539614}
   password: {fileID: 1565931421}
-  animator: {fileID: 0}
+  animator: {fileID: 1222051663}
 --- !u!1 &1385870873
 GameObject:
   m_ObjectHideFlags: 0

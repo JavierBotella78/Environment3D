@@ -9,6 +9,8 @@ public class InitializeGame : MonoBehaviour
     [SerializeField]
     private GameObject[] toDesactive;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,5 @@ public class InitializeGame : MonoBehaviour
         foreach (GameObject actual in toDesactive)
             actual.SetActive(false);
 
-        Cursor.visible = false;
     }
 }

@@ -49,6 +49,8 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 2100000, guid: fa02bd65aad00d54183fb3c14721c178, type: 2}
+    - time: 0.33333334
+      value: {fileID: 2100000, guid: fa02bd65aad00d54183fb3c14721c178, type: 2}
     attribute: m_Materials.Array.data[0]
     path: usb/led
     classID: 23
@@ -76,12 +78,13 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 2100000, guid: fa02bd65aad00d54183fb3c14721c178, type: 2}
+    - {fileID: 2100000, guid: fa02bd65aad00d54183fb3c14721c178, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

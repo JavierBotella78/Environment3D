@@ -19,7 +19,10 @@ public class finishLogin : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Cambio de escena :)");
+        //Busco mi objeto Game Manager
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        if(gameManager)
+            gameManager.cambiarEscena("SearchScene");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

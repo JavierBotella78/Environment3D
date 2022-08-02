@@ -19,7 +19,9 @@ public class turntrue : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Oculto canvas");
+        GameObject canvas=GameObject.Find("Canvas");
+        if (canvas)
+            canvas.SetActive(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

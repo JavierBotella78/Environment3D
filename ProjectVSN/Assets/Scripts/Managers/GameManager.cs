@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Busco el objeto llamado GameManager
-        GameObject gameManager = GameObject.Find("GameManager");
+        gameManager = GameObject.Find("GameManager");
 
         //Le indico que no se destruya al cargar otra escena 
         DontDestroyOnLoad(gameManager);

@@ -10,6 +10,8 @@ public class ClickObject : MonoBehaviour
     private Material hoverMaterial;
     private Material defaultMaterial;
     private Renderer obj;
+    [SerializeField]
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class ClickObject : MonoBehaviour
             ViewAssigned.SetActive(true);
             obj.material = hoverMaterial;
             GetComponent<HoverObjects>().doHover = false;
+            animator.SetBool("open", true);
         }
         else
         {
@@ -40,5 +43,6 @@ public class ClickObject : MonoBehaviour
         ViewAssigned.SetActive(false);
         obj.material = defaultMaterial;
         GetComponent<HoverObjects>().doHover = true;
+        animator.SetBool("open", false);
     }
 }

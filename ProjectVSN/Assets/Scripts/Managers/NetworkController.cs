@@ -19,6 +19,19 @@ public class NetworkController : MonoBehaviour
     [SerializeField]
     private bool isEnabled = false;
 
+    // Con una url, empecamos una petición GET para conectar con la API de VSN
+    public NetworkResponse StartGET(string url)
+    {
+        NetworkResponse result = new();
+
+        if (isEnabled)
+        {
+            StartCoroutine(GetCoroutineAsset(result, url));
+        }
+
+        return result;
+    }
+
     // Con una url, empecamos una petición POST para conectar con la API de VSN
     public NetworkResponse StartSearch(string url, string searchText)
     {
@@ -47,8 +60,7 @@ public class NetworkController : MonoBehaviour
     public IEnumerator GetCoroutine(NetworkResponse result, string url)
     {
         // Se crea un objeto capaz de realizar llamadas GET a la url indicada
-        UnityWebRequest www = UnityWebRequest.Get(url); 
-
+        UnityWebRequest www = UnityWebRequest.Get(url);
 
         yield return www.SendWebRequest();
 
@@ -68,7 +80,41 @@ public class NetworkController : MonoBehaviour
 
     }
 
-     private const string prePayload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"0a739c06-406c-4abd-8ffa-cf9cc7aed142\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"bda6a22f-1705-4cde-92e3-de18bb12329b\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"id\":\"\",\"descripcion\":\"\",\"tipoCampo\":0,\"dataSource\":null},\"condicion\":{\"id\":18,\"descripcion\":\"AllTexts\"},\"valor\":\"";
+    public IEnumerator GetCoroutineAsset(NetworkResponse result, string url)
+    {
+        // Se crea un objeto capaz de realizar llamadas GET a la url indicada
+        UnityWebRequest www = UnityWebRequest.Get(url);
+
+        www.SetRequestHeader("Accept", "application/json, text/javascript, */*; q=0.01");
+        www.SetRequestHeader("Content-type", "application/json; charset=UTF-8");
+        www.SetRequestHeader("Authorization", "Logon rbaena:Vsn1234");
+        www.SetRequestHeader("Accept-encoding", "gzip, deflate, br");
+        www.SetRequestHeader("Accept-language", "es-ES,es;q=0.9");
+
+        var cert = new ForceAcceptAll();
+        www.certificateHandler = cert;
+
+        yield return www.SendWebRequest();
+
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+            result.resultCode = www.result;
+        }
+        else
+        {
+            // Mostrar el resultado como texto (json)
+            result.respText = www.downloadHandler.text;
+            result.resultCode = www.result;
+
+        }
+
+        cert?.Dispose();
+
+    }
+
+    private const string prePayload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"0a739c06-406c-4abd-8ffa-cf9cc7aed142\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"bda6a22f-1705-4cde-92e3-de18bb12329b\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"id\":\"\",\"descripcion\":\"\",\"tipoCampo\":0,\"dataSource\":null},\"condicion\":{\"id\":18,\"descripcion\":\"AllTexts\"},\"valor\":\"";
     private const string postPayload = "\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"LAST_DATE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
 
     public IEnumerator PostCoroutine(NetworkResponse result, string url, string searchText)

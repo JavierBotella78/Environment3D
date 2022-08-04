@@ -9,8 +9,9 @@ public class VSNAsset
     {
     }
 
-    public VSNAsset(string id, string name, string imgUrl, string desc, string type, string classs, string lastDate)
+    public VSNAsset(string pk, string id, string name, string imgUrl, string desc, string type, string classs, string lastDate)
     {
+        PK_ = pk;
         Id_ = id;
         Name_ = name;
         ImgURL_ = imgUrl;
@@ -21,6 +22,7 @@ public class VSNAsset
         LastDate_ = lastDate;
     }
 
+    public string PK_ { get; }
     public string Id_ { get; }
     public string Name_ { get; }
     public string ImgURL_ { get; }

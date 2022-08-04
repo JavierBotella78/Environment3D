@@ -280,11 +280,24 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6027a73cf7cf74940bcb734ea662e139, type: 2}
+    - target: {fileID: 4751539796537799029, guid: 1dd94adf35526b4459a2f4e8620d585f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6027a73cf7cf74940bcb734ea662e139, type: 2}
+    - target: {fileID: 7027245339855143617, guid: 1dd94adf35526b4459a2f4e8620d585f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dd94adf35526b4459a2f4e8620d585f, type: 3}
 --- !u!4 &274990109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1dd94adf35526b4459a2f4e8620d585f, type: 3}
+  m_PrefabInstance: {fileID: 274990108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &274990110 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7027245339855143617, guid: 1dd94adf35526b4459a2f4e8620d585f, type: 3}
   m_PrefabInstance: {fileID: 274990108}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &307706858 stripped
@@ -433,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 73239f98823f79243899a8a18e7c6d8d, type: 2}
-  obj: {fileID: 0}
+  obj: {fileID: 274990110}
   doHover: 1
 --- !u!114 &465382320
 MonoBehaviour:
@@ -1956,6 +1969,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
+    - target: {fileID: -5207872315704156998, guid: 7a1ff9b49bb707e4ab2d0c253aa176b0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a1ff9b49bb707e4ab2d0c253aa176b0, type: 3}
       propertyPath: m_Name
       value: object1
@@ -1965,6 +1982,11 @@ PrefabInstance:
 --- !u!4 &1175195592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a1ff9b49bb707e4ab2d0c253aa176b0, type: 3}
+  m_PrefabInstance: {fileID: 1175195591}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1175195593 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -5207872315704156998, guid: 7a1ff9b49bb707e4ab2d0c253aa176b0, type: 3}
   m_PrefabInstance: {fileID: 1175195591}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193207351 stripped
@@ -1998,7 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 9e8084f2471478748b6f9573c4bb5f12, type: 2}
-  obj: {fileID: 0}
+  obj: {fileID: 1175195593}
   doHover: 1
 --- !u!114 &1193207356
 MonoBehaviour:
@@ -2064,11 +2086,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7701141563415869511, guid: 5bc71daf0baa1f443b23e6b1825f3579, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
     - target: {fileID: -7511558181221131132, guid: 5bc71daf0baa1f443b23e6b1825f3579, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
     - target: {fileID: -7192350012061355289, guid: 5bc71daf0baa1f443b23e6b1825f3579, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37f0b6101d88a854884ec523af786f53, type: 2}
+    - target: {fileID: -3544943677431238565, guid: 5bc71daf0baa1f443b23e6b1825f3579, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 37f0b6101d88a854884ec523af786f53, type: 2}
@@ -2081,6 +2111,11 @@ PrefabInstance:
 --- !u!4 &1219110682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5bc71daf0baa1f443b23e6b1825f3579, type: 3}
+  m_PrefabInstance: {fileID: 1219110681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1219110683 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7701141563415869511, guid: 5bc71daf0baa1f443b23e6b1825f3579, type: 3}
   m_PrefabInstance: {fileID: 1219110681}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1238111705 stripped
@@ -2257,6 +2292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1401808710}
   - component: {fileID: 1401808711}
+  - component: {fileID: 1401808712}
   m_Layer: 0
   m_Name: ObjectManager
   m_TagString: Untagged
@@ -2295,6 +2331,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb54607ec91dd94592ffaf0fa680c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1401808712
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401808709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1415165678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,7 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 72ce5a4d7f86c28438185107c479f92a, type: 2}
-  obj: {fileID: 0}
+  obj: {fileID: 1219110683}
   doHover: 1
 --- !u!114 &1618001223
 MonoBehaviour:
@@ -2704,6 +2760,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
+    - target: {fileID: -2291001101829597401, guid: c4dcdd3b00dcd2a44a1a04746e6d3e7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c24edce5c70bf04298d09bfb9730bcc, type: 2}
+    - target: {fileID: -261885386008933798, guid: c4dcdd3b00dcd2a44a1a04746e6d3e7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6f993a40706b7a45b485ff695af5eb7, type: 2}
     - target: {fileID: 919132149155446097, guid: c4dcdd3b00dcd2a44a1a04746e6d3e7e, type: 3}
       propertyPath: m_Name
       value: object2
@@ -2717,6 +2781,11 @@ PrefabInstance:
 --- !u!4 &1791222720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c4dcdd3b00dcd2a44a1a04746e6d3e7e, type: 3}
+  m_PrefabInstance: {fileID: 1791222719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1791222721 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2291001101829597401, guid: c4dcdd3b00dcd2a44a1a04746e6d3e7e, type: 3}
   m_PrefabInstance: {fileID: 1791222719}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1791222723
@@ -2745,7 +2814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: f652e7a23f1f4b942a42769634e6440c, type: 2}
-  obj: {fileID: 0}
+  obj: {fileID: 1791222721}
   doHover: 1
 --- !u!114 &1791222725
 MonoBehaviour:

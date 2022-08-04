@@ -44,10 +44,10 @@ public class NetworkController : MonoBehaviour
     }
 
     // "https://catfact.ninja/fact"
-    IEnumerator GetCoroutine(NetworkResponse result, string url)
+    public IEnumerator GetCoroutine(NetworkResponse result, string url)
     {
         // Se crea un objeto capaz de realizar llamadas GET a la url indicada
-        UnityWebRequest www = UnityWebRequest.Get(url); // Llamada de prueba que da una curiosidad sobre gatos aleatoria
+        UnityWebRequest www = UnityWebRequest.Get(url); 
 
 
         yield return www.SendWebRequest();
@@ -71,7 +71,7 @@ public class NetworkController : MonoBehaviour
      private const string prePayload = "{\"ID\":0,\"Name\":\"\",\"Completed\":true,\"Private\":false,\"Class\":\"\",\"AssetType\":\"\",\"Search\":{\"requerimientosBusqueda\":{\"id\":\"0a739c06-406c-4abd-8ffa-cf9cc7aed142\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[],\"ItemsBusquedaGrupos\":[{\"id\":\"bda6a22f-1705-4cde-92e3-de18bb12329b\",\"tipoAgrupacion\":\"0\",\"ItemsBusquedaReglas\":[{\"campo\":{\"id\":\"\",\"descripcion\":\"\",\"tipoCampo\":0,\"dataSource\":null},\"condicion\":{\"id\":18,\"descripcion\":\"AllTexts\"},\"valor\":\"";
     private const string postPayload = "\",\"searchMode\":\"1\"}],\"ItemsBusquedaGrupos\":[]}]},\"sortFieldsList\":[{\"solrSortField\":\"LAST_DATE_MDT_Asset_System\",\"sortDirection\":\"1\"}]}}";
 
-    IEnumerator PostCoroutine(NetworkResponse result, string url, string searchText)
+    public IEnumerator PostCoroutine(NetworkResponse result, string url, string searchText)
     {
         string payload = prePayload + searchText + postPayload;
         // Se crea un objeto capaz de realizar llamadas POST a la url indicada
@@ -110,7 +110,7 @@ public class NetworkController : MonoBehaviour
 
     }
 
-    IEnumerator GetTexture(string url, VSNAsset asset)
+    public IEnumerator GetTexture(string url, VSNAsset asset)
     {
         // Se crea un objeto capaz de realizar llamadas GET a la url indicada
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);

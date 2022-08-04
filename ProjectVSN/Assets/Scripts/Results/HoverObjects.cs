@@ -16,6 +16,8 @@ public class HoverObjects : MonoBehaviour
         if(obj==null)
             obj = transform.GetComponent<Renderer>();
         defaultMaterial = obj.material;
+        if (hoverMaterial == null)
+            hoverMaterial = defaultMaterial;
         hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Animator>();
         hand.SetBool("IsHover", false);
 

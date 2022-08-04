@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     {
         //Cambio cursor
         Cursor.SetCursor(pointerText, Vector2.zero, CursorMode.Auto);
-        //Cursor.visible = false;
 
         //Busco el objeto llamado GameManager
         gameManager = GameObject.Find("GameManager");

@@ -31,6 +31,7 @@ public static class ConverterController
             if (i == num)
                 break;
 
+            string pk = child.Value<string>("Asset_pk");
             string id = child.Value<string>("Asset_ID_SORT");
             string name = child.Value<string>("Asset_TITLE_SORT");
             string imgurl = child.Value<string>("Asset_ICON");
@@ -41,7 +42,7 @@ public static class ConverterController
             string lastDate = child.Value<string>("Asset_LAST_DATE");
 
             // Creamos un VSNAsset dentro del array
-            vsnAssets[i] = new VSNAsset(id, name, imgurl, desc, type, classs, lastDate);
+            vsnAssets[i] = new VSNAsset(pk, id, name, imgurl, desc, type, classs, lastDate);
 
             i++;
         }

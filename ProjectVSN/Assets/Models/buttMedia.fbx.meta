@@ -2,7 +2,19 @@ fileFormatVersion: 2
 guid: 8bd799cd85c2b6744924452f82536382
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 3116376769962775833
+    second: Armature|close
+  - first:
+      74: -2121929352376425845
+    second: Armature|closeButt
+  - first:
+      74: -1599475197567934812
+    second: Armature|open
+  - first:
+      74: 6443482684398082464
+    second: Armature|openButt
   externalObjects: {}
   materials:
     materialImportMode: 2

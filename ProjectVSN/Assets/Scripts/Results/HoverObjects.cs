@@ -9,6 +9,7 @@ public class HoverObjects : MonoBehaviour
     [SerializeField]
     private Renderer obj;
     private Animator hand;
+    public bool doHover = true;
 
     void Start()
     {
@@ -28,14 +29,16 @@ public class HoverObjects : MonoBehaviour
 
     private void OnMouseExit()
     {
-        obj.material = defaultMaterial;
+        if(doHover)
+            obj.material = defaultMaterial;
         hand.SetBool("IsHover", false);
 
     }
 
     private void OnMouseUpAsButton()
     {
-        obj.material = defaultMaterial;
+        if (doHover)
+            obj.material = defaultMaterial;
         hand.SetBool("IsHover", false);
 
     }

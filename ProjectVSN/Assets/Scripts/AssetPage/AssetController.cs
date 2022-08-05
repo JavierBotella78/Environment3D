@@ -15,15 +15,17 @@ public class AssetController : MonoBehaviour
 
     private void Start()
     {
-         netResponse =  nc.StartGET(@"https://testing/MAM/assets/" + mainAsset.PK_ + "?");
+         //netResponse =  nc.StartGET(@"https://testing/MAM/assets/" + mainAsset.PK_ + "?");
     }
 
     private void Update()
     {
+        /*
         if (netResponse.resultCode == UnityWebRequest.Result.Success && !check)
         {
             Debug.Log(netResponse.respText);
             check = true;
         }
+        */
     }
 }

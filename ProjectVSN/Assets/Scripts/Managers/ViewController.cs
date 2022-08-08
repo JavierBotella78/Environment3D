@@ -141,6 +141,10 @@ public class ViewController : MonoBehaviour
                 GameObject ph = listPH[i];
                 ph.GetComponent<ClickRes>().setAsset(assets[j]);
 
+                // Primary Key (No visible)
+                TextMeshPro pkGO = ph.transform.Find("Pk").gameObject.GetComponent<TextMeshPro>();
+                pkGO.text = assets[j].PK_;
+
                 // Titulo
                 TextMeshPro titleGO = ph.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();
                 titleGO.text = assets[j].Name_;
@@ -315,6 +319,10 @@ public class ViewController : MonoBehaviour
             actualResult = Instantiate(placeholderOpen, point.transform);
 
             VSNAsset actualAsset = original.GetComponent<ClickRes>().getAsset();
+
+            // Primary Key (No visible)
+            TextMeshPro pkGO = actualResult.transform.Find("Pk").gameObject.GetComponent<TextMeshPro>();
+            pkGO.text = actualAsset.PK_;
 
             // Titulo
             TextMeshPro titleGO = actualResult.transform.Find("Title").gameObject.GetComponent<TextMeshPro>();

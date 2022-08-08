@@ -809,6 +809,51 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &373166064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 373166066}
+  - component: {fileID: 373166065}
+  m_Layer: 0
+  m_Name: SelectedAsset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &373166065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373166064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1996525755c61c4448dbd82e7eca0d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAssetPK: 
+--- !u!4 &373166066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373166064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.575909, y: 1.5296441, z: -6.337617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &377378681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
   obj: {fileID: 0}
+  doHover: 1
 --- !u!1 &432059050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 785017fd4752bb341a0291ec3aa2a38a, type: 3}
@@ -1745,6 +1791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
   obj: {fileID: 0}
+  doHover: 1
 --- !u!95 &779218168
 Animator:
   serializedVersion: 4
@@ -2759,6 +2806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverMaterial: {fileID: 2100000, guid: 11ec3473758c5394ba2092c2c495026a, type: 2}
   obj: {fileID: 0}
+  doHover: 1
 --- !u!135 &1446718763
 SphereCollider:
   m_ObjectHideFlags: 0

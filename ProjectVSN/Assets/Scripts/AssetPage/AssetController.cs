@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class AssetController : MonoBehaviour
 {
-    public VSNAsset mainAsset;
+    public ExtendedVSNAsset mainAsset;
 
     public NetworkController nc;
 
@@ -15,17 +15,21 @@ public class AssetController : MonoBehaviour
 
     private void Start()
     {
-         //netResponse =  nc.StartGET(@"https://testing/MAM/assets/" + mainAsset.PK_ + "?");
+        string assetPk = GameObject.Find("SelectedAsset").GetComponent<SelectedAssetController>().selectedAssetPK;
+
+         netResponse =  nc.StartGET(@"https://testing/MAM/assets/" + assetPk + "?");
     }
 
     private void Update()
     {
-        /*
+        
         if (netResponse.resultCode == UnityWebRequest.Result.Success && !check)
         {
+
+
             Debug.Log(netResponse.respText);
             check = true;
         }
-        */
+        
     }
 }

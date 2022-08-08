@@ -24,5 +24,7 @@ public class InitializeGame : MonoBehaviour
         foreach (GameObject actual in toDesactive)
             actual.SetActive(false);
 
+        Cursor.lockState = CursorLockMode.None;
+
     }
 }

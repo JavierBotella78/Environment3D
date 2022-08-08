@@ -25,9 +25,9 @@ public class AssetController : MonoBehaviour
         
         if (netResponse.resultCode == UnityWebRequest.Result.Success && !check)
         {
+            mainAsset = ConverterController.TextToExtVSNAsset(netResponse.respText);
 
-
-            Debug.Log(netResponse.respText);
+            Debug.Log(mainAsset);
             check = true;
         }
         

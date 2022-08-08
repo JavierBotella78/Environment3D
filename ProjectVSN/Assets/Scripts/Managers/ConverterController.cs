@@ -24,9 +24,9 @@ public static class ConverterController
         VSNAsset[] vsnAssets = new VSNAsset[num];
 
         // Buscamos lo necesario para crear un VSNAsset
-        
+
         int i = 0;
-        foreach (var child in jsonObj.GetValue("response").Value<JToken>("docs").Children()) 
+        foreach (var child in jsonObj.GetValue("response").Value<JToken>("docs").Children())
         {
             if (i == num)
                 break;
@@ -49,6 +49,33 @@ public static class ConverterController
 
 
         return vsnAssets;
+    }
+
+    public static ExtendedVSNAsset JSONObjToExtVSNAsset(JObject jsonObj)
+    {
+        string pk = jsonObj.Value<string>("Asset_pk");
+        string id = jsonObj.Value<string>("Asset_ID_SORT");
+        string name = jsonObj.Value<string>("Asset_TITLE_SORT");
+        string imgurl = jsonObj.Value<string>("Asset_ICON");
+
+        string desc = jsonObj.Value<string>("Asset_DESCRIPTION_SORT");
+        string type = jsonObj.Value<string>("Asset_TYPE_NAME_REPRESENTATIVE");
+        string classs = jsonObj.Value<string>("Asset_CLASS_NAME_REPRESENTATIVE");
+        string lastDate = jsonObj.Value<string>("Asset_LAST_DATE");
+
+        string creatName = jsonObj.Value<string>("CreatorName");
+        string creatTime = jsonObj.Value<string>("CreationTime");
+        bool recicle = jsonObj.Value<bool>("InRecicleBin");
+        string copy = jsonObj.Value<string>("Copyright");
+
+        // Creamos un VSNAsset dentro del array
+        return new ExtendedVSNAsset(pk, id, name, imgurl, desc, type, classs, lastDate, creatName, creatTime, recicle, copy);
+    }
+
+    // Transforma un texto json a una lista de objetos VSNAsset
+    public static ExtendedVSNAsset TextToExtVSNAsset(string text)
+    {
+        return JSONObjToExtVSNAsset(TextToJSON(text));
     }
 
     // Transforma un texto json a una lista de objetos VSNAsset
